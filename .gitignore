@@ -1,0 +1,10 @@
+*.aux
+*.fls
+*.log
+*.out
+*.toc
+*.synctex.gz
+motivation/
+*Zone*
+*/class/
+*.fdb_latexmk
