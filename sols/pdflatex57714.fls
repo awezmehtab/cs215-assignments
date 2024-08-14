@@ -1,0 +1,4 @@
+PWD /home/awez_mehtab/sem3/cs215/hw/sols
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
