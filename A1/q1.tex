@@ -3,6 +3,8 @@
 	fair dice (a fair die has equal probability of every face). On every roll, a win is achieved if we get a
 	prime number on the top. What is the probability that A will have more wins than B if both roll
 	all of their dice?
+
+	\hspace*{\fill} [5 marks]
 \end{que}
 \begin{tcolorbox}
 	\begin{sol}
@@ -19,10 +21,10 @@
 		Now the probability that $A$ has more wins than $B$ is
 		\begin{align}
 			p(i>j) = \sum_{i=0}^{n+1}\sum_{\substack{j=0 \\ i>j}}^{n} p(A_i)p(B_j)
-			\label{eq:ans}
+			\label{eqn:ans}
 		\end{align}
 		Since number of wins of $A$ is independent from that of $B$.
-		By writing each possible term $\binom{n+1}{i}$ and $\binom{n}{j}$ in a grid manner. We observe that our required terms cover exactly half of the grid. Thus equation (\ref{eq:ans}) simplifies to
+		By writing each possible term $\binom{n+1}{i}$ and $\binom{n}{j}$ in a grid manner. We observe that our required terms cover exactly half of the grid. Thus equation (\ref{eqn:ans}) simplifies to
 		\begin{align}
 			p(i>j) = \frac{\sum_{i=0}^{n+1}\binom{n+1}{i}\left(\frac{1}{2}\right)^{n+1}\cdot\sum_{j=0}^{n}\binom{n}{j}\left(\frac{1}{2}\right)^{n}}{2}
 			 & = \frac{1}{2}

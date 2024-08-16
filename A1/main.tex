@@ -1,26 +1,35 @@
 \documentclass{report}
+% Many important packages
 \usepackage{amsmath, amssymb, tcolorbox, logicproof, fancyhdr,
     enumitem, float, graphicx, amsthm, listings, xcolor, hyperref, cochineal, nicematrix, tikz,
 titlesec, tcolorbox}
 
 \title{CS215 Assignment 1 Solutions }
-\author{Satyam Sinoliya, 23B0958 \\ Vaibhav Singh, 23b1068 \\ Shaik Awez Mehtab, 23b1080}
+\author{Satyam Sinoliya, 23B0958 \\ Vaibhav Singh, 23B1068 \\ Shaik Awez Mehtab, 23B1080}
 \date{August 2024}
 
+% Setting up the look of the page
 \RequirePackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
 
+% To be able to write the code
 \lstset { %
 	language=C++,
 	basicstyle=\fontfamily{pcr}\footnotesize,
 	keepspaces=true,
 }
 
+% For breakable tcolorbox
+\tcbuselibrary{listings,breakable}
+
+% No need to include whole path everytime
+\graphicspath{{./images/}}
+
 \theoremstyle{definition}
-\newtheorem{sol}{Solution}
-\newtheorem{que}{Question}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
-\newtheorem{corollary}{Corollary}
+\newtheorem{sol}{Solution} % Use this for writing solutions
+\newtheorem{que}{Question} % For questions
+\newtheorem{theorem}{Theorem} % For theorems
+\newtheorem{lemma}{Lemma} % For lemmas
+\newtheorem{corollary}{Corollary} % For corollaries
 
 \begin{document}
 \maketitle
