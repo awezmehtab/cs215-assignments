@@ -1,1 +1,43 @@
 % Start writing your answer from here, if you want to use new packages/change something do it in main.tex
+\begin{que}
+	\textbf{3.1} Let Q1, Q2 be non-negative random variables. Let $P(Q_1 < q_1) \geq 1-p_1$ and $P(Q_2 < q_2) \geq 1-p_2$
+    where $q_1, q_2$ are non-negative. Then show that $P(Q_1Q_2 < q_1q_2) \geq 1 - (p_1 + p_2)$
+	\hspace*{\fill} [5 marks]
+\end{que}
+
+\begin{tcolorbox}
+	\begin{sol}
+        Define two events, $E_1$ and $E_2$: \\
+        \begin{enumerate}
+            \item $E_1=\{Q_1<q_1\}$
+            \item $E_2=\{Q_2<q_2\}$
+        \end{enumerate}
+        So,
+        \[P(E_1)\geq 1-p_1\]
+        \[P(E_2)\geq 1-p_2\]
+        We need to prove that,
+        \[ P(Q_1Q_2 < q_1q_2) \geq 1 - (p_1 + p_2)\]
+        Let's define another event $E_3$, where $E_3=\{Q_1Q_2 < q_1q_2\}$\\
+        If we consider the complement of $E_3$, which is
+        \[\{Q_1Q_2 < q_1q_2\}^\complement=\{Q_1Q_2 \geq q_1q_2\}\]
+        \[E_3^\complement=\{Q_1Q_2 \geq q_1q_2\}\]
+        \clearpage
+        If $Q_1Q_2 \geq q_1q_2$, and $Q_1,Q_2$ are non-negative integers, it is very clear that, atleast one of the following has to be true:
+        \[Q_1\geq q_1 \text{ or }Q_2\geq q2 \]
+        This means \[E_3^\complement \subseteq \{Q_1\geq q_1\}\cup\{Q_2\geq q_2\} \]
+        This implies,
+        \[P(E_3^\complement)\leq P(\{Q_1\geq q_1\}\cup\{Q_2\geq q_2\} )\]
+        \[P(E_3^\complement)\leq P(\{Q_1\geq q_1\})+P(\{Q_2\geq q_2\} )\]
+        It is clear that:
+        \[\{Q_1\geq q_1\} = E_1^\complement \text{ and } \{Q_2\geq q_2\} = E_2^\complement\]
+        So,         
+        \[1-P(E_3)\leq P(E_1^\complement) + P(E_2^\complement)\]
+        \[1-P(E_3)\leq 1-P(E_1) + 1-P(E_2)\]
+        \[1-P(E_3)\leq 1-(1-p_1) + 1-(1-p_2)\]
+        \[1-P(E_3)\leq p_1 +p_2\]
+        This implies,
+        \[P(E_3)\geq 1-(p_1+p2)\]
+
+
+    \end{sol}
+\end{tcolorbox}
