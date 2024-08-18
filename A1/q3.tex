@@ -1,14 +1,18 @@
 % Start writing your answer from here, if you want to use new packages/change something do it in main.tex
 \begin{que}
-	Let $Q_{1}$, $Q_{2}$ be non-negative random variables. Let $P(Q_1 < q_1) \geq 1-p_1$ and $P(Q_2 < q_2) \geq 1-p_2$
-	where $q_1, q_2$ are non-negative. Then show that $P(Q_1Q_2 < q_1q_2) \geq 1 - (p_1 + p_2)$
+		\textbf{3.1} Let $Q_{1}$, $Q_{2}$ be non-negative random variables. Let $P(Q_1 < q_1) \geq 1-p_1$ and $P(Q_2 < q_2) \geq 1-p_2$
+		where $q_1, q_2$ are non-negative. Then show that $P(Q_1Q_2 < q_1q_2) \geq 1 - (p_1 + p_2)$\\
+		\textbf{3.2} Given n distinct values ${\{x_i\}}^n_{i=1}$ with mean $\mu$ and standard deviation $\sigma$, prove that for all $i$,
+		we have $|x_i - \mu| \leq \sigma \sqrt[]{n-1}$. How does this inequality compare with Chebyshev's inequality as n
+		increases? (give an informal answer)
+	
 
 	\hspace*{\fill} [5 marks]
 \end{que}
 
 \begin{tcolorbox}[breakable]
 	\begin{sol}
-		Define two events, $E_1$ and $E_2$:
+		\textbf{3.1}Define two events, $E_1$ and $E_2$:
 		\begin{enumerate}
 			\item $E_1=\{Q_1<q_1\}$
 			\item $E_2=\{Q_2<q_2\}$
@@ -38,5 +42,18 @@
 		\[1-P(E_3)\leq p_1 +p_2\]
 		This implies,
 		\[P(E_3)\geq 1-(p_1+p_2)\]
+		\textbf{3.2} We know that,
+		\[\frac{\sum^n_{i=0}(x_i-\mu)^2}{n-1}=\sigma^2\]
+		This implies,
+		\[\sum^n_{i=0}(x_i-\mu)^2 = \sigma^2(n-1)\]
+		For any $i$,
+		\[(x_i-\mu)^2\geq0\]
+		So, for each $i$,
+		\[(x_i-\mu)^2\leq\sigma^2\times(n-1)\]
+		Again, as both $(x_i-\mu)^2$ and $\sigma^2\times(n-1)$ are greater than or equal to zero, we can take square root on both sides.
+		\[\sqrt[2]{(x_i-\mu)^2}\leq\sqrt[2]{\sigma^2(n-1)}\]
+		\[|x_i-\mu|\leq\sigma\sqrt[]{n-1}\]
+
+
 	\end{sol}
 \end{tcolorbox}
