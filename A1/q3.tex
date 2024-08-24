@@ -81,6 +81,8 @@
 			\sqrt[2]{(x_i-\mu)^2}\leq\sqrt[2]{\sigma^2(n-1)}
 			|x_i-\mu|\leq\sigma\sqrt[]{n-1}
 		\end{align*}
-
+		Chebyshev's inequality states that for any distribution, the proportion of values that lie more than $k$ standard deviations away from the mean is bounded by:
+		\[P(|x-\mu | \geq k\sigma\leq \frac{1}{k^2})\]
+		As $n$ increases, the deterministic bound $|x_i-\mu|\leq \sigma\sqrt[]{n-1}$ can potentially become less tight as $\sqrt[]{n-1}$, but it remains a stronger bound for small datasets compared to Chebyshev's inequality. As Chebyshev's inequality, on the other hand, remains a probabilistic statement that applies to a portion of the distribution and becomes less restrictive for larger values of $k$.
 	\end{sol}
 \end{tcolorbox}
