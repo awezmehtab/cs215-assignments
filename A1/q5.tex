@@ -11,4 +11,16 @@
 	trader whose ID matches someone who has already placed a trade. Given this
 	situation, what position in the queue should you choose to maximize your
 	chances of receiving the free trade?
+	\hspace*{\fill} [6 marks]
 \end{que}
+\begin{tcolorbox}[breakable]
+	\begin{sol}
+		We have infinite number of trader where each trader is assigned an ID number from 1 to 200 waiting in a queue. We need to find the position which maximises the chance of getting a free trade, where free trade is awarded to a person whose ID number matches with someone ahead in the queue, that is, person who has traded. Since there are 200 unique IDs, the last position one can win is 201 (by pigeon hole principle). 1st person can never win as it has no one ahead of him. Therefore for $i^{th}$ person $i \in \{2,3,4,\cdots,201 \}$ to win, the probability of winning a free trade is given by
+		\begin{align}
+			P(i) & = \frac{200}{200} \times \frac{199}{200} \times \cdots \times \frac{202 - i}{200} \times \frac{i-1}{200} \\
+			     & = \prod_{j=2}^{i} \Bigg( \frac{202 - j}{200} \Bigg) \times \frac{i - 1}{200}
+		\end{align}
+		For maximising this probability I have used python and I have attached a file for the code. The position which maximises the probability of winning a free trade is 15 with a probability of 0.0439.
+
+	\end{sol}
+\end{tcolorbox}
