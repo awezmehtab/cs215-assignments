@@ -1,1 +1,46 @@
 % Start writing your answer from here, if you want to use new packages/change something do it in main.tex
+\begin{que}
+	You need a new staff assistant, and you have n people to interview. You
+	want to hire the best candidate for the position. When you interview a
+	candidate, you can give them a score, with the highest score being the
+	best and no ties being possible.
+
+	You interview the candidates one by one. Because of your company’s
+	hiring practices, after you interview the kth candidate, you either
+	offer the candidate the job before the next interview or you forever
+	lose the chance to hire that candidate. We suppose the candidates are
+	interviewed in a random order, chosen uniformly at random from all n!
+	possible orderings.
+
+	We consider the following strategy. First, interview m candidates but
+	reject them all: these candidates give you an idea of how strong the
+	field is. After the mth candidate. hire the first candidate you
+	interview who is better than all of the previous candidates you have
+	interviewed.
+
+	\begin{enumerate}
+		\item Let $E$ be the event that we hire the best assistant, and let $E_i$;
+		      be the event that ith candidate is the best and we hire him.
+		      Determine $Pr(E_i)$, and show that
+		      \begin{align}
+			      Pr(E) = \frac{m}{n}\sum_{j=m+1}^{n} \frac{1}{j-1}
+		      \end{align}
+		      \hspace*{\fill}[4 marks]
+		\item Bound $\sum_{j=m+1}^n \frac{1}{j-1}$ to obtain:
+		      \begin{align}
+			      \frac{m}{n}(\ln{n} - \ln{m}) \leq Pr(E) \leq
+			      \frac{m}{n}(\ln(n-1) - \ln(m-1))
+		      \end{align}
+		      \hspace*{\fill}[3 marks]
+		\item Show that $\frac{m}{n}(\ln(n) - \ln(m))$ is maximized
+		      when $m = \frac{n}{e}$ , and explain why this means $Pr(E)
+			      \geq \frac{1}{e}$ for this choice of $m$.
+		      \hspace*{\fill}[3 marks]
+	\end{enumerate}
+\end{que}
+
+\begin{tcolorbox}
+	\begin{sol}
+
+	\end{sol}
+\end{tcolorbox}
