@@ -1,42 +1,83 @@
 % Start writing your answer from here, if you want to use new packages/change something do it in main.tex
 
 \begin{que}
-	You are playing a trading game against two teams $A$ and $B$ (will happen
-	in reality soon). The game is played in the form of a three-set series
-	with $A$ and $B$ alternately. Also, Team $B$ is better at trading than Team
-	$A$. To encourage your trading career, the exchange (an organization
-	responsible for managing the trades) gives you two options $A$-$B$-$A$ (which
-	means you play a game with Team $A$, then Team $B$ and at last Team $A$
-	again) or $B$-$A$-$B$. You will win if you win two sets in a row. Which of
-	the two options should you choose? Justify your choice with proper
-	calculations.
+	You are playing a trading game against two teams $A$ and $B$ (will
+	happen in reality soon). The game is played in the form of a three-set
+	series with $A$ and $B$ alternately. Also, Team $B$ is better at
+	trading than Team $A$. To encourage your trading career, the exchange
+	(an organization responsible for managing the trades) gives you two
+	options $A$-$B$-$A$ (which means you play a game with Team $A$, then
+	Team $B$ and at last Team $A$ again) or $B$-$A$-$B$. You will win if
+	you win two sets in a row. Which of the two options should you choose?
+	Justify your choice with proper calculations.
 	\hspace*{\fill} [5 marks]
 \end{que}
 
 \begin{tcolorbox}[breakable]
 	\begin{sol}
-		Let $p_A$ and $p_B$ be the probability of winning the set against Team $A$ and Team $B$ respectively. Since, Team $B$ is better than team $A$, we know that,
-        \[p_A>p_B\]
-        For the first sequence, (i.e. A-B-A), to result in a win, we either have to win first and second set and lose the third set, or win the second and third set and lose the first set win all three sets. Probability of this happening is, (denoted as $P_1$)
-        \[P_1=p_A\times p_B \times (1-p_A)+(1-p_A)\times p_B\times p_A +p_A\times p_B\times p_A\]
-        \[P_1=p_Ap_B-p_A^2p_B+p_Ap_B-p_A^2p_B+p_A^2p_B\]
-        \[P_1=2p_Ap_B-p_A^2p_B\]
-        Similary for second sequence, (i.e, B-A-B), the probablity for winning will be(let it be $P_2$)
-        \[P_2=p_B\times p_A \times (1-p_B)+(1-p_B)\times p_A\times p_B +p_B\times p_A\times p_B\]
-        \[P_2=p_Ap_B-p_Ap_B^2+p_Ap_B-p_Ap_B^2+p_Ap_B^2\]
-        \[P_2=2p_Ap_B-p_Ap_B^2\]
-        Since we know that,
-        \[p_A>p_B\]
-        As, both $p_A$ and $p_B$ is positive, we can multiple them to both the sides without changing the inequality sign,
-        \[p_A\times p_Ap_B > p_B\times p_Ap_B\]
-        This gives us:
-        \[p_A^2p_B > p_Ap_B^2\]
-        Multiplying $-1$ on both the sides,
-        \[-p_A^2p_B < -p_Ap_B^2\]
-        Adding $2p_Ap_B$ on both the sides,
-        \[ 2p_Ap_B-p_A^2p_B < 2p_Ap_B-p_Ap_B^2\]
-        Which simplifies to,
-        \[P_1 < P_2\]
-        So, playing in the \textbf{second} sequence(B-A-B) gives us better chances of winning the game.
+		Let $p_A$ and $p_B$ be the probability of winning the set
+		against Team $A$ and Team $B$ respectively. Since, Team $B$ is
+		better than team $A$, we know that,
+		\begin{align}
+			p_A>p_B
+		\end{align}
+
+		For the first sequence, (i.e. $A-B-A$), to result in a win, we
+		either have to win first and second set and lose the third set,
+		or win the second and third set and lose the first set win all
+		three sets. Probability of this happening is, (denoted as
+		$P_1$)
+		\begin{align}
+			P_1=p_A\cdot p_B \cdot (1-p_A)+(1-p_A)\cdot p_B\cdot p_A +p_A\cdot p_B\cdot p_A
+		\end{align}
+		\begin{align}
+			P_1=p_Ap_B-p_A^2p_B+p_Ap_B-p_A^2p_B+p_A^2p_B
+		\end{align}
+		\begin{align}
+			P_1=2p_Ap_B-p_A^2p_B
+		\end{align}
+
+		Similary for second sequence, (i.e, $B-A-B$), the probablity for
+		winning will be (let it be $P_2$)
+		\begin{align}
+			P_2=p_B\cdot p_A \cdot (1-p_B)+(1-p_B)\cdot p_A\cdot p_B +p_B\cdot p_A\cdot p_B
+		\end{align}
+		\begin{align}
+			P_2=p_Ap_B-p_Ap_B^2+p_Ap_B-p_Ap_B^2+p_Ap_B^2
+		\end{align}
+		\begin{align}
+			P_2=2p_Ap_B-p_Ap_B^2
+		\end{align}
+
+		Since we know that,
+		\[p_A>p_B\]
+		As, both $p_A$ and $p_B$ is positive, we can multiple them to
+		both the sides without changing the inequality sign,
+		\begin{align}
+			p_A\cdot p_Ap_B > p_B\cdot p_Ap_B
+		\end{align}
+
+		This gives us:
+		\begin{align}
+			p_A^2p_B > p_Ap_B^2
+		\end{align}
+
+		Multiplying $-1$ on both the sides,
+		\begin{align}
+			-p_A^2p_B < -p_Ap_B^2
+		\end{align}
+
+		Adding $2p_Ap_B$ on both the sides,
+		\begin{align}
+			2p_Ap_B-p_A^2p_B < 2p_Ap_B-p_Ap_B^2
+		\end{align}
+
+		Which simplifies to,
+		\begin{align}
+			P_1 < P_2
+		\end{align}
+
+		So, playing in the \textbf{second} sequence ($B-A-B$) gives us
+		better chances of winning the game.
 	\end{sol}
 \end{tcolorbox}

@@ -26,9 +26,10 @@
 		library. The image was then shifted horizontally by \texttt{tx}
 		pixels for each value of \texttt{tx} in the range of -10 to
 		+10. The shifting operation was implemented manually, ensuring
-		that unoccupied pixels were assigned a value of 0. 
+		that unoccupied pixels were assigned a value of 0.
 
-		A custom function \texttt{shiftimg} was created to handle the shifting process:
+		A custom function \texttt{shiftimg} was created to handle the
+		shifting process:
 		\begin{itemize}
 			\item If \texttt{tx > 0}, pixels were shifted
 			      rightwards by \texttt{tx} units.
@@ -37,8 +38,8 @@
 			\item If \texttt{tx = 0}, the function returned the
 			      original image.
 		\end{itemize}
-		All the shifted images are displayed in the Jupyter notebook(q8.ipynb). Some of them are displayed below.
-		\begin{figure}[H]
+		All the shifted images are displayed in the Jupyter notebook
+		(q8.ipynb). Some of them are displayed below. \begin{figure}[H]
 			\centering
 			\begin{minipage}{0.345\textwidth}
 				\centering
@@ -53,16 +54,19 @@
 				\label{fig:leftShift}
 			\end{minipage}
 		\end{figure}
-		
+
 
 		For each shifted image, the correlation coefficient between the
 		original and shifted image was calculated. This coefficient
 		quantifies the linear relationship between the two images, with
 		values ranging from -1 to 1, where 1 indicates a perfect
 		positive correlation, -1 indicates a perfect negative
-		correlation, and 0 indicates no correlation. This done using a function \texttt{corrcoef} in \texttt{numpy} library. This function require 2 1-D arrays to determine the correlation coeffiecient. The flattenning of arrays was done using \texttt{.flatten()}.
-		Then correlation for each shift is plotted on a graph shown below.  
-
+		correlation, and 0 indicates no correlation. This done using a
+		function \texttt{corrcoef} in \texttt{numpy} library. This
+		function require 2 1-D arrays to determine the correlation
+		coeffiecient. The flattenning of arrays was done using
+		\texttt{.flatten()}. Then correlation for each shift is plotted
+		on a graph shown below.
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.8\textwidth]{correlation_plot.png}
@@ -76,7 +80,13 @@
 		expected as the more the image is shifted, the less it
 		resembles the original, resulting in lower correlation values.
 
-		Following this, normalized histogram is plotted for each channel(R,G,B). This is done without use of any library, by creating a function \texttt{draw\_hist} which takes the image of a single channel, transverses through each pixel taking the note of its value and finally each value is divided by the total number of pixels(width*height) to normalize the histogram.
+		Following this, normalized histogram is plotted for each
+		channel (RGB). This is done without use of any library, by
+		creating a function \texttt{draw\_hist} which takes the image
+		of a single channel, transverses through each pixel taking the
+		note of its value and finally each value is divided by the
+		total number of pixels(width*height) to normalize the
+		histogram.
 
 		\begin{figure}[H]
 			\centering
@@ -96,9 +106,5 @@
 			\caption{Normalized Histogram of blue channel of the Original Image}
 			\label{fig:hist_blue_plot}
 		\end{figure}
-
-		
-
-		
 	\end{sol}
 \end{tcolorbox}

@@ -2,12 +2,17 @@
 \begin{que}
 	This question has two parts:
 	\begin{itemize}
-		\item \textbf{3.1} Let $Q_{1}$, $Q_{2}$ be non-negative random variables. Let $P(Q_1 < q_1) \geq 1-p_1$ and $P(Q_2 < q_2) \geq 1-p_2$
-		      where $q_1, q_2$ are non-negative. Then show that $P(Q_1Q_2 < q_1q_2) \geq 1 - (p_1 + p_2)$\\
+		\item \textbf{3.1} Let $Q_{1}$, $Q_{2}$ be non-negative random
+		      variables. Let $P(Q_1 < q_1) \geq 1-p_1$ and $P(Q_2 < q_2)
+			      \geq 1-p_2$ where $q_1, q_2$ are non-negative. Then show
+		      that $P(Q_1Q_2 < q_1q_2) \geq 1 - (p_1 + p_2)$\\
 		      \hspace*{\fill} [3 marks]
-		\item \textbf{3.2} Given n distinct values ${\{x_i\}}^n_{i=1}$ with mean $\mu$ and standard deviation $\sigma$, prove that for all $i$,
-		      we have $|x_i - \mu| \leq \sigma \sqrt[]{n-1}$. How does this inequality compare with Chebyshev's inequality as n
-		      increases? (give an informal answer)
+		\item \textbf{3.2} Given n distinct values ${\{x_i\}}^n_{i=1}$
+		      with mean $\mu$ and standard deviation $\sigma$, prove that
+		      for all $i$, we have $|x_i - \mu| \leq \sigma
+			      \sqrt[]{n-1}$. How does this inequality compare with
+		      Chebyshev's inequality as n increases? (give an informal
+		      answer)
 	\end{itemize}
 	\hspace*{\fill} [3+2 marks]
 \end{que}
@@ -22,67 +27,89 @@
 			\item $E_1=\{Q_1<q_1\}$
 			\item $E_2=\{Q_2<q_2\}$
 		\end{enumerate}
+
 		So,
-		\begin{align*}
+		\begin{align}
 			P(E_1)\geq 1-p_1 \\
 			P(E_2)\geq 1-p_2
-		\end{align*}
+		\end{align}
+
 		We need to prove that,
-		\begin{align*}
+		\begin{align}
 			P(Q_1Q_2 < q_1q_2) \geq 1 - (p_1 + p_2)
-		\end{align*}
-		Let's define another event $E_3$, where $E_3=\{Q_1Q_2 < q_1q_2\}$\\
-		If we consider the complement of $E_3$, which is
-		\begin{align*}
+		\end{align}
+
+		Let's define another event $E_3$, where $E_3=\{Q_1Q_2 <
+			q_1q_2\}$\\ If we consider the complement of $E_3$, which is
+		\begin{align}
 			\{Q_1Q_2 < q_1q_2\}^\complement=\{Q_1Q_2 \geq q_1q_2\} \\
 			E_3^\complement=\{Q_1Q_2 \geq q_1q_2\}
-		\end{align*}
-		If $Q_1Q_2 \geq q_1q_2$, and $Q_1,Q_2$ are non-negative integers, it is very clear that, atleast one of the following has to be true:
-		\begin{equation*}
+		\end{align}
+
+		If $Q_1Q_2 \geq q_1q_2$, and $Q_1,Q_2$ are non-negative
+		integers, it is very clear that, atleast one of the following
+		has to be true: \begin{equation*}
 			Q_1\geq q_1 \text{ or }Q_2\geq q_2 \\
 		\end{equation*}
-		\begin{align*}
+		\begin{align}
 			 & \implies E_3^\complement \subseteq \{Q_1\geq q_1\}\cup\{Q_2\geq q_2\}
-		\end{align*}
-		\begin{align*}
+		\end{align}
+		\begin{align}
 			\implies P(E_3^\complement) & \leq P\left(\{Q_1\geq q_1\}\cup\{Q_2\geq q_2\} \right) \\
 			                            & \leq P(\{Q_1\geq q_1\})+P(\{Q_2\geq q_2\} )
-		\end{align*}
+		\end{align}
+
 		It is clear that:
-		\begin{align*}
+		\begin{align}
 			\{Q_1\geq q_1\} = E_1^\complement \text{ and } \{Q_2\geq q_2\} = E_2^\complement
-		\end{align*}
+		\end{align}
+
 		So,
-		\begin{align*}
+		\begin{align}
 			1-P(E_3)        & \leq P(E_1^\complement) + P(E_2^\complement) \\
 			                & \leq 1-P(E_1) + 1-P(E_2)                     \\
 			                & \leq 1-(1-p_1) + 1-(1-p_2)                   \\
 			                & \leq p_1 +p_2                                \\
 			\implies P(E_3) & \geq 1-(p_1+p_2)
-		\end{align*}
+		\end{align}
 
 
 		\textbf{Solution 3.2}
 		We know that,
-		\begin{align*}
+
+		\begin{align}
 			\frac{\sum^n_{i=0}(x_i-\mu)^2}{n-1}=\sigma^2 \\
 			\implies \sum^n_{i=0}(x_i-\mu)^2 = \sigma^2(n-1)
-		\end{align*}
+		\end{align}
+
 		For any $i$,
-		\begin{align*}
+		\begin{align}
 			(x_i-\mu)^2\geq0
-		\end{align*}
+		\end{align}
+
 		So, for each $i$,
-		\begin{align*}
+		\begin{align}
 			(x_i-\mu)^2\leq\sigma^2\times(n-1)
-		\end{align*}
-		Again, as both $(x_i-\mu)^2$ and $\sigma^2\times(n-1)$ are greater than or equal to zero, we can take square root on both sides.
-		\begin{align*}
+		\end{align}
+
+		Again, as both $(x_i-\mu)^2$ and $\sigma^2\times(n-1)$ are
+		greater than or equal to zero, we can take square root on both
+		sides.
+		\begin{align}
 			\sqrt[2]{(x_i-\mu)^2}\leq\sqrt[2]{\sigma^2(n-1)}
 			|x_i-\mu|\leq\sigma\sqrt[]{n-1}
-		\end{align*}
-		Chebyshev's inequality states that for any distribution, the proportion of values that lie more than $k$ standard deviations away from the mean is bounded by:
-		\[P(|x-\mu | \geq k\sigma\leq \frac{1}{k^2})\]
-		As $n$ increases, the deterministic bound $|x_i-\mu|\leq \sigma\sqrt[]{n-1}$ can potentially become less tight as $\sqrt[]{n-1}$ increase with $n$, but it remains a stronger bound for small datasets compared to Chebyshev's inequality. As Chebyshev's inequality, on the other hand, remains a probabilistic statement that applies to a portion of the distribution and becomes less restrictive for larger values of $k$.
+		\end{align}
+
+		Chebyshev's inequality states that for any distribution, the
+		proportion of values that lie more than $k$ standard deviations
+		away from the mean is bounded by: \[P(|x-\mu | \geq k\sigma\leq
+			\frac{1}{k^2})\] As $n$ increases, the deterministic bound
+		$|x_i-\mu|\leq \sigma\sqrt[]{n-1}$ can potentially become less
+		tight as $\sqrt[]{n-1}$ increase with $n$, but it remains a
+		stronger bound for small datasets compared to Chebyshev's
+		inequality. As Chebyshev's inequality, on the other hand,
+		remains a probabilistic statement that applies to a portion of
+		the distribution and becomes less restrictive for larger values
+		of $k$.
 	\end{sol}
 \end{tcolorbox}
