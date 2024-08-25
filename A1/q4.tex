@@ -39,8 +39,134 @@
 	\end{enumerate}
 \end{que}
 
-\begin{tcolorbox}
+\begin{tcolorbox}[breakable]
 	\begin{sol}
+		Probability that $i^\text{th}$ person is best is $\frac{1}{n}$,
+		let him be $X$. All other remaining people are not better than
+		$X$. Now, if $i\leq m$, $Pr(E_i) = 0$. For $i\geq m+1$, $X$ is
+		selected if and only if the best person from first to
+		$m^\text{th}$ person (let him be $M$) is better than everyone
+		from $(m+1)^\text{th}$ to $(i-1)^\text{th}$ person. We'll try
+		to count the number of permutations of people such that this
+		condition is satisfied.
 
+		When all of the $n$ people are arranged in ascending order, let
+		$j^\text{th}$ person be $b_j$, the last person (i.e $b_n$) is
+		$X$. Suppose the best of first $i-1$ is $b_j$, then $b_j$
+		should be in first $m$ people. Remaining everyone in $i-1$
+		people is before $b_j$. The number of combinations of first
+		$i-1$ people (except $b_j$) is
+		\begin{align}
+			\C{j-1}{i-1}
+		\end{align}
+		Total number of permutations when $i^\text{th}$ person is best
+		and the best of first $m$ people is $b_j$ is
+		\begin{align}
+			\C{j-1}{i-2}\cdot m\cdot (i-2)!\cdot(n-i)!
+		\end{align}
+		Since, $j$ can be in [$i-1$, $n-1$] So the total number of
+		permutations is
+		\begin{align}
+			P & ={\sum_{j=i-1}^{n-1}} {\C{j-1}{i-2}} \cdot m \cdot (i-2)! \cdot (n-i)! \\
+			  & = \C{n-1}{i-1}\cdot m \cdot (i-2)! \cdot (n-i)!
+		\end{align}
+		Total number of permutations is $(n-1)!$, probability that
+		$i^\text{th}$ person is selected given he is the best is
+		\begin{align}
+			Pr(\text{selected } i | i \text{ is best}) & = \frac{\C{n-1}{i-1}\cdot m \cdot (i-2)! \cdot (n-i)!}{(n-1)!} \\
+			                                           & = \frac{m}{i-1}
+		\end{align}
+		Now, $Pr(i\text{ is best}) = \frac{1}{n}$. Therefore,
+		\begin{align}
+			Pr(\text{selected } i \cap i \text{ is best}) & =
+			Pr(\text{selected } i | i \text{ is best})\cdot Pr(i
+			\text{ is best})                                  \\
+			                                              & =
+			\frac{m}{i-1}\cdot \frac{1}{n}
+		\end{align}
+		Since each of $E_i$ is disjoint,
+		\begin{align}
+			Pr(E) & = \sum_{j=0}^{n} Pr(E_j)                    \\
+			      & = \frac{m}{n}\sum_{j=m+1}^{n} \frac{1}{j-1}
+		\end{align}
+
+		\begin{center}
+			\begin{tikzpicture}
+				\begin{axis}[
+						domain=4:15,
+						samples=200,
+						xmin=4, xmax=15,
+						ymin=0, ymax=0.4,
+						axis x line=middle, axis y line=middle,
+						xlabel={$x$}, ylabel={$y$},
+						xtick={4,6,8,10,12,14,15},
+						xticklabels={},
+						ytick=\empty,
+						enlargelimits=true,
+						grid=major,
+						legend pos=north east,
+						width=12cm,
+						height=8cm,
+						no markers
+					]
+
+					% Plotting 1/x
+					\addplot[name path=A, domain=4:15, thick, blue] {1/x};
+					\addlegendentry{$y = \frac{1}{x}$}
+
+					% Plotting 1/(x-1)
+					\addplot[name path=B, domain=4:15, thick, red] {1/(x-1)};
+					\addlegendentry{$y = \frac{1}{x-1}$}
+
+					% Define the path at y=0 for filling purposes
+					\path[name path=axis] (axis cs:4,0) -- (axis cs:15,0);
+
+					% Shading the area under 1/x
+					\addplot [blue, opacity=0.3] fill between [
+							of=A and axis,
+							soft clip={domain=4:15},
+						];
+
+					% Shading the area under 1/(x-1)
+					\addplot [red, opacity=0.3] fill between [
+							of=B and axis,
+							soft clip={domain=4:15},
+						];
+
+					% Drawing rectangles under 1/x
+					\foreach \m in {4,5,...,14} {
+							\addplot+ [ybar interval, samples at={\m, \m+1}, fill=blue, fill opacity=0.3, draw=blue] coordinates {(\m, 0) (\m, {1/\m}) (\m+1, {1/\m}) (\m+1, 0)};
+						}
+
+					% Custom labels at specific ticks
+					\node at (axis cs:4, -0.05) [anchor=north] {$m$};
+					\node at (axis cs:5, -0.05) [anchor=north] {$m+1$};
+					\node at (axis cs:9, -0.05) [anchor=north] {$\dots$};
+					\node at (axis cs:14, -0.05) [anchor=north] {$n-1$};
+					\node at (axis cs:15, -0.05) [anchor=north] {$n$};
+
+				\end{axis}
+			\end{tikzpicture}
+		\end{center}
+
+		Area under the rectangles is just $\sum_{j=m}^{n-1}\frac{1}{j}$, which is bound by the area of the two curves $\frac{1}{x}$ and $\frac{1}{x-1}$
+		\begin{align}
+			\int_{m}^{n} \frac{1}{x} dx \leq \sum_{j=m}^{n-1}\frac{1}{j} \leq \int_{m}^{n} \frac{1}{x-1} dx
+		\end{align}
+		\begin{align}
+			\implies \frac{m}{n}(\ln{n} - \ln{m}) \leq Pr(E) \leq \frac{m}{n}(\ln{(n-1)} - \ln{(m-1)})
+			\label{eq:conc4}
+		\end{align}
+		Let $n=mk$, then
+		\begin{align}
+			\frac{m}{n}(\ln{n} - \ln{m}) & = \frac{1}{k}(\ln{mk} - \ln{m}) \\
+			                             & = \frac{\ln{k}}{k} = f(k)
+		\end{align}
+		This is maximum when $f'(k) = 0$ and $f"(k) < 0$. $f'(k) = \frac{1-\ln{k}}{k^2} = 0$, then $k=e$. Therefore $\frac{m}{n} = e$ i.e $n=\frac{m}{e}$.
+		By equation \ref{eq:conc4}, $Pr(E) \geq \frac{1}{e}$ for this choice of $m$ and $n$.
+
+		Hence Proved.
 	\end{sol}
 \end{tcolorbox}
+
+

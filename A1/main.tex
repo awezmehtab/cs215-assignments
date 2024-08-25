@@ -1,8 +1,8 @@
 \documentclass{report}
 % Many important packages
 \usepackage{amsmath, amssymb, tcolorbox, logicproof, fancyhdr,
-    enumitem, float, graphicx, amsthm, listings, xcolor, hyperref, cochineal, nicematrix, tikz,
-titlesec, tcolorbox}
+    enumitem, float, graphicx, amsthm, listings, xcolor, hyperref, cochineal, nicematrix, 
+titlesec, tcolorbox, tikz, pgfplots}
 \hypersetup{hidelinks}
 
 \title{CS215 Assignment 1 Solutions }
@@ -25,6 +25,10 @@ titlesec, tcolorbox}
 % No need to include whole path everytime
 \graphicspath{{./images/}}
 
+% For drawing graph in q4
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
+
 \theoremstyle{definition}
 \newtheorem{sol}{Solution} % Use this for writing solutions
 \newtheorem{que}{Question} % For questions
@@ -33,6 +37,7 @@ titlesec, tcolorbox}
 \newtheorem{corollary}{Corollary} % For corollaries
 
 \renewcommand{\complement}{\mathsf{c}}
+\newcommand{\C}[2]{^{#1}C_{#2}}
 
 \begin{document}
 \maketitle
