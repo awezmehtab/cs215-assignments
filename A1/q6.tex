@@ -23,8 +23,19 @@
 	\hspace*{\fill}[10 marks]
 \end{que}
 
-\begin{tcolorbox}
+\begin{tcolorbox}[breakable]
 	\begin{sol}
-		% Add your solution here
+		For computing new mean from previously computed mean and the new value, we just need to multiply the older mean with the size of the set and add the new value and divide the whole sum by n+1. The mean is given by
+  \begin{equation}
+      NewMean=\frac{OldMean*n+newDataVal}{n+1}
+  \end{equation}
+  For computing the new median, we need to append the new value to the array and then sort it. If the older n was even, we need to return the key at $\big(\frac{n+2}{2}\big)$. If older n was odd, we need to return the average of key at $\big(\frac{n+1}{2},\frac{n+2}{2}\big)$. This approach is used if the array is not sorted. If we make an assumption that the array is sorted, then we need to compare the new element with just the current median, one element just larger than the median and one element just smaller than the median and we can apply the same approach as before to compute the median. 
+  \par For computing the new standard deviation, first we get new variance using the contribution of old variance and mean and then add the effect of new data and mean to it. The formula is given by 
+  \begin{equation}
+      newVar=\frac{((n-1)*oldVar+(NewDataVal-OldMean)*(NewDataVal-NewMean))}{n}
+  \end{equation}
+ 
+  \par If we want to update the histogram of A,we can directly find the bin range in which the value lies in and increment the value of that particular bin by 1.
+  The assumptions we are making include that we already have a histogram that tracks the count of each bin and the bin ranges/width are fixed.
 	\end{sol}
 \end{tcolorbox}
