@@ -39,8 +39,25 @@ titlesec, tcolorbox, tikz, pgfplots}
 \renewcommand{\complement}{\mathsf{c}}
 \newcommand{\C}[2]{^{#1}C_{#2}}
 
+% For Background Image
+\usepackage{eso-pic}
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,%
+keepaspectratio]{images/bg.jpg}%
+\vfill
+}}}
+
 \begin{document}
+
+\color{white}
+\AddToShipoutPicture*{\BackgroundPic}
 \maketitle
+\color{black}
+
 \input{q1.tex}
 \input{q2.tex}
 \input{q3.tex}
