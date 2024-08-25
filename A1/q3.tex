@@ -9,8 +9,7 @@
 		      \hspace*{\fill} [3 marks]
 		\item \textbf{3.2} Given n distinct values ${\{x_i\}}^n_{i=1}$
 		      with mean $\mu$ and standard deviation $\sigma$, prove that
-		      for all $i$, we have $|x_i - \mu| \leq \sigma
-			      \sqrt[]{n-1}$. How does this inequality compare with
+		      for all $i$, we have $|x_i - \mu| \leq \sigma\sqrt{n-1}$. How does this inequality compare with
 		      Chebyshev's inequality as n increases? (give an informal
 		      answer)
 	\end{itemize}
@@ -89,15 +88,15 @@
 
 		So, for each $i$,
 		\begin{align}
-			(x_i-\mu)^2\leq\sigma^2\times(n-1)
+			(x_i-\mu)^2\leq\sigma^2\cdot(n-1)
 		\end{align}
 
-		Again, as both $(x_i-\mu)^2$ and $\sigma^2\times(n-1)$ are
+		Again, as both $(x_i-\mu)^2$ and $\sigma^2\cdot(n-1)$ are
 		greater than or equal to zero, we can take square root on both
 		sides.
 		\begin{align}
 			\sqrt[2]{(x_i-\mu)^2}\leq\sqrt[2]{\sigma^2(n-1)}
-			|x_i-\mu|\leq\sigma\sqrt[]{n-1}
+			|x_i-\mu|\leq\sigma\sqrt{n-1}
 		\end{align}
 
 		Chebyshev's inequality states that for any distribution, the

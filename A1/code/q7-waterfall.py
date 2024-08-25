@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from mpl_toolkits.mplot3d import Axes3D
 
 df = pd.read_csv("../data/pulse_spectrum_over_time.csv")
 
@@ -34,8 +33,8 @@ for i in range(len(times)):
         edgecolor="k",
     )
 
-ax.set_xlabel("Frequency (Hz)")
-ax.set_ylabel("Time (s)")
+ax.set_xlabel("Frequency")
+ax.set_ylabel("Time")
 ax.set_zlabel("Amplitude")
 
 plt.title("Waterfall plot of pulse spectrum over time")

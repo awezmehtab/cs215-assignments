@@ -39,6 +39,19 @@ titlesec, tcolorbox, tikz, pgfplots}
 \renewcommand{\complement}{\mathsf{c}}
 \newcommand{\C}[2]{^{#1}C_{#2}}
 
+\fancypagestyle{myfooter}{
+    \fancyhf{} 
+    \fancyhead[L]{\textbf{CS215 Assignment 1}} % Text above the line
+    \fancyhead[C]{}
+    \fancyhead[R]{}
+    \renewcommand{\headrulewidth}{0.4pt}
+
+    \fancyfoot[L]{Awez}
+    \fancyfoot[C]{Vaibhav}
+    \fancyfoot[R]{Satyam}
+    \renewcommand{\footrulewidth}{0.4pt}
+}
+
 % For Background Image
 \usepackage{eso-pic}
 \newcommand\BackgroundPic{%
@@ -50,6 +63,8 @@ titlesec, tcolorbox, tikz, pgfplots}
 keepaspectratio]{images/bg.jpg}%
 \vfill
 }}}
+
+\pagestyle{myfooter}
 
 \begin{document}
 
