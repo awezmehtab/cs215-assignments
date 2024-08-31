@@ -1,10 +1,14 @@
-\documentclass{report}
+\documentclass[oneside]{report}
 
 \usepackage{
 	amsmath, amssymb, tcolorbox, fancyhdr, enumitem, float,
 	graphicx, amsthm, listings, xcolor, hyperref, nicematrix,
 	titlesec, tcolorbox, tikz, lipsum
 }
+\tcbuselibrary{breakable}
+
+% Page Layout
+\usepackage[a4paper, top=1.2in, bottom=1.2in, inner=1.0in, outer=1.0in]{geometry}
 
 % Font
 \usepackage[sc]{mathpazo}
@@ -36,12 +40,13 @@
 % Solution box
 \newtcolorbox[
     auto counter,
-    % subtitle style={}
-]{solution}{title=Solution~\thetcbcounter}
+]{solution}{breakable,title=Solution~\thetcbcounter}
 
 % Extra commands
 \newcommand{\Ber}{\text{Ber}}
 \newcommand{\Bin}{\text{Bin}}
+\newcommand{\NegBin}{\text{NegBin}}
+\newcommand{\Geo}{\text{Geo}}
 \newcommand{\E}{\mathbb{E}}
 
 \begin{document}

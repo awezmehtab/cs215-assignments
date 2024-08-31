@@ -10,18 +10,59 @@
 	\begin{align}
 		G_\Ber(z) & = P[X=0]z^0 + P[X=1]z^1 \\
 		          & = (1-p) + pz
-		\label{en:ber}
+		\label{en:pgfber}
 	\end{align}
 
 	\tcbsubtitle{Task B}
-	When $X\sim\Bin(n,p)$, PMF of $X$, $P[X=k] = \binom{n}{k}p^k(1-p)^{n-k}$ for $0\leq
-		k\leq n$. But for $k>n$, $P[X=k]=0$.
+	When $X\sim\Bin(n,p)$, PMF of $X$ is
+	\begin{equation}
+		P[X=k] = \binom{n}{k}p^k(1-p)^{n-k} \text{  for  } k\leq n.
+	\end{equation}
+	and $P[X=k]=0$ for $k>n$.
 	\begin{align}
 		G_\Bin(z) & = \sum_{k=0}^\infty P[X=k]z^k                \\
 		          & = \sum_{k=0}^n \binom{n}{k}p^k(1-p)^{n-k}z^k \\
 		          & = \sum_{k=0}^n \binom{n}{k}(pz)^k(1-p)^{n-k} \\
 		          & = (1-p + pz)^n.
+		\label{en:pgfbin}
 	\end{align}
-	By equation \ref{en:ber}, $G_\Bin(z) = (1-p + pz)^n = (G_\Ber(z))^n$.
-	Hence proved.
+	By equation \ref{en:pgfber}, $G_\Bin(z) = (1-p + pz)^n =
+	(G_\Ber(z))^n$. Hence proved.
+
+	\tcbsubtitle{Task D}
+	When $X\sim\Geo(p)$, PMF of $X$,
+	\begin{equation}
+		P[X=k] = (1-p)^{k-1}p
+	\end{equation}
+	for $k>0$. $P[X=0]=0$. Now, PGF of $X$,
+	\begin{align}
+		G_\Geo(z) & = \sum_{k=0}^\infty P[X=k]z^k       \\
+		          & = \sum_{k=1}^\infty P[X=k]z^k       \\
+		          & = \sum_{k=1}^\infty p(1-p)^{k-1}z^k \\
+		          & = \sum_{k=1}^\infty pz(z-zp)^{k-1}  \\
+		          & = pz\sum_{k=0}^\infty (z-zp)^k      \\
+		          & = \frac{pz}{1-z+pz}
+	\end{align}
+
+	\tcbsubtitle{Task E}
+	By equation \ref{en:pgfbin}, $G_\Bin(z) = (1-p + pz)^n = G_X^{(n,p)}(z)$. For
+	$Y\sim\NegBin(n,p)$
+	\begin{align}
+	    P[Y=k] = \binom{k-1}{n-1}p^n(1-p)^{k-n}
+	    \text{ for } k\geq n
+	\end{align}
+	Otherwise, $P[Y=k]=0$. PGF of $Y$ is
+	\begin{align}
+	    G_Y^{(n,p)}(z) &= \sum_{k=0}^\infty P[Y=k]z^k \\
+				&= \sum_{k=n}^\infty \binom{k-1}{n-1}p^n(1-p)^{k-n}z^k \\
+				&= \sum_{k=0}^\infty \binom{k+n-1}{n-1}p^n(1-p)^kz^{n+k} \\
+				&= (pz)^n\sum_{k=0}^\infty \binom{k+n-1}{n-1}(z-pz)^k
+	\end{align}
+	We know $\sum_{k=0}^\infty \binom{k+n-1}{n-1}x^k = (1-x)^{-n}$. Thus
+	\begin{align}
+	    G_Y^{(n,p)}(z) &= (pz)^n(1-z+pz)^{-n} \\
+			   &= \left((1-p^{-1} + p^{-1}z^{-1})^n\right)^{-1} \\
+			   &= (G_X^{(n,p^{-1})}(z^{-1}))^{-1}.
+	\end{align}
+	Hence Proved.
 \end{solution}
