@@ -1,0 +1,56 @@
+\documentclass{report}
+
+\usepackage{
+	amsmath, amssymb, tcolorbox, fancyhdr, enumitem, float,
+	graphicx, amsthm, listings, xcolor, hyperref, nicematrix,
+	titlesec, tcolorbox, tikz, lipsum
+}
+
+% Font
+\usepackage[sc]{mathpazo}
+
+% Title
+\title{Assignment 2: CS215}
+\author{
+    Satyam Sinoliya, 23B0958 \\
+    Vaibhav Singh, 23B1068 \\
+    Shaik Awez Mehtab, 23B1080
+}
+\date{}
+
+% Header and Footer
+\fancypagestyle{mystyle}{
+    \fancyhf{} 
+    \fancyhead[L]{\textbf{Assignment 2}} % Text above the line
+    \fancyhead[C]{\thepage}
+    \fancyhead[R]{\textbf{CS215}}
+    \renewcommand{\headrulewidth}{0.4pt}
+
+    \fancyfoot[L]{\textbf{Awez}}
+    \fancyfoot[C]{\textbf{Vaibhav}}
+    \fancyfoot[R]{\textbf{Satyam}}
+    \renewcommand{\footrulewidth}{0.4pt}
+}
+\pagestyle{mystyle}
+
+% Solution box
+\newtcolorbox[
+    auto counter,
+    % subtitle style={}
+]{solution}{title=Solution~\thetcbcounter}
+
+% Extra commands
+\newcommand{\Ber}{\text{Ber}}
+\newcommand{\Bin}{\text{Bin}}
+\newcommand{\E}{\mathbb{E}}
+
+\begin{document}
+
+\maketitle
+
+\input{q1.tex}
+\input{q2.tex}
+\input{q3.tex}
+\input{q4.tex}
+\input{q5.tex}
+\end{document}
