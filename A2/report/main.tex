@@ -6,6 +6,7 @@
 	titlesec, tcolorbox, tikz, lipsum
 }
 \tcbuselibrary{breakable}
+\tcbuselibrary{skins}
 
 % Page Layout
 \usepackage[a4paper, top=1.2in, bottom=1.2in, inner=1.0in, outer=1.0in]{geometry}
@@ -40,7 +41,7 @@
 % Solution box
 \newtcolorbox[
     auto counter,
-]{solution}{breakable,title=Solution~\thetcbcounter}
+]{solution}{skin=enhanced,drop shadow,breakable,title=Solution~\thetcbcounter}
 
 % Extra commands
 \newcommand{\Ber}{\text{Ber}}

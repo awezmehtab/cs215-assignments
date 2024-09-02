@@ -1,7 +1,7 @@
 \begin{solution}
 	% Fill you solution here
 	\tcbsubtitle{Task A}
-	When $X\sim\Ber(p)$, PGF of $X$ is
+	Let $X\sim\Ber(p)$, PGF of $X$ is
 	\begin{align}
 		G_\Ber(z) & = \E(z^X)                     \\
 		          & = \sum_{n=0}^\infty P[X=n]z^n
@@ -14,7 +14,7 @@
 	\end{align}
 
 	\tcbsubtitle{Task B}
-	When $X\sim\Bin(n,p)$, PMF of $X$ is
+	Let $X\sim\Bin(n,p)$, PMF of $X$ is
 	\begin{equation}
 		P[X=k] = \binom{n}{k}p^k(1-p)^{n-k} \text{  for  } k\leq n.
 	\end{equation}
@@ -27,10 +27,10 @@
 		\label{en:pgfbin}
 	\end{align}
 	By equation \ref{en:pgfber}, $G_\Bin(z) = (1-p + pz)^n =
-	(G_\Ber(z))^n$. Hence proved.
+		(G_\Ber(z))^n$. Hence proved.
 
 	\tcbsubtitle{Task D}
-	When $X\sim\Geo(p)$, PMF of $X$,
+	Let $X\sim\Geo(p)$, PMF of $X$,
 	\begin{equation}
 		P[X=k] = (1-p)^{k-1}p
 	\end{equation}
@@ -45,24 +45,70 @@
 	\end{align}
 
 	\tcbsubtitle{Task E}
-	By equation \ref{en:pgfbin}, $G_\Bin(z) = (1-p + pz)^n = G_X^{(n,p)}(z)$. For
+	By equation \ref{en:pgfbin}, $G_\Bin(z) = (1-p + pz)^n = G_X^{(n,p)}(z)$. Let
 	$Y\sim\NegBin(n,p)$
 	\begin{align}
-	    P[Y=k] = \binom{k-1}{n-1}p^n(1-p)^{k-n}
-	    \text{ for } k\geq n
+		P[Y=k] = \binom{k-1}{n-1}p^n(1-p)^{k-n}
+		\text{ for } k\geq n
 	\end{align}
 	Otherwise, $P[Y=k]=0$. PGF of $Y$ is
 	\begin{align}
-	    G_Y^{(n,p)}(z) &= \sum_{k=0}^\infty P[Y=k]z^k \\
-				&= \sum_{k=n}^\infty \binom{k-1}{n-1}p^n(1-p)^{k-n}z^k \\
-				&= \sum_{k=0}^\infty \binom{k+n-1}{n-1}p^n(1-p)^kz^{n+k} \\
-				&= (pz)^n\sum_{k=0}^\infty \binom{k+n-1}{n-1}(z-pz)^k
+		G_Y^{(n,p)}(z) & = \sum_{k=0}^\infty P[Y=k]z^k                           \\
+		               & = \sum_{k=n}^\infty \binom{k-1}{n-1}p^n(1-p)^{k-n}z^k   \\
+		               & = \sum_{k=0}^\infty \binom{k+n-1}{n-1}p^n(1-p)^kz^{n+k} \\
+		               & = (pz)^n\sum_{k=0}^\infty \binom{k+n-1}{n-1}(z-pz)^k
 	\end{align}
 	We know $\sum_{k=0}^\infty \binom{k+n-1}{n-1}x^k = (1-x)^{-n}$. Thus
 	\begin{align}
-	    G_Y^{(n,p)}(z) &= (pz)^n(1-z+pz)^{-n} \\
-			   &= \left((1-p^{-1} + p^{-1}z^{-1})^n\right)^{-1} \\
-			   &= (G_X^{(n,p^{-1})}(z^{-1}))^{-1}.
+		G_Y^{(n,p)}(z) & = (pz)^n(1-z+pz)^{-n}                           \\
+		               & = \left((1-p^{-1} + p^{-1}z^{-1})^n\right)^{-1} \\
+		               & = (G_X^{(n,p^{-1})}(z^{-1}))^{-1}.
 	\end{align}
 	Hence Proved.
+
+	\tcbsubtitle{Task G}
+	\textbf{To prove:} \textit{Given PGF of a random variable $X$ is
+		$G(z)$, expectation of $X$ i.e $\E[X] = G'(1)$.}
+
+	\textbf{Proof:} \begin{align}
+		G(z)  & = \E(z^X) = \sum_{k=0}^\infty P[X=k]z^k \\
+		G'(z) & = \sum_{k=0}^\infty kP[X=k]z^{k-1}      \\
+		G'(1) & = \sum_{k=0}^\infty kP[X=k]             \\
+		      & = \E[X]
+	\end{align}
+	Hence Proved.
+	Now, Let's derive means of Bernoulli, Binomial, Geometric and Negative Binomial
+	distributions using this:
+	\begin{enumerate}
+		\item \textbf{Bernoulli Distribution:} Let $X\sim\Ber(p)$,
+		      \begin{align}
+			      G_\Ber(z)  & = (1-p) + pz \\
+			      G'_\Ber(z) & = p          \\
+			      G'_\Ber(1) & = p = \E[X]
+		      \end{align}
+		      Thus, $\E[X] = p$.
+		\item \textbf{Binomial Distribution:} Let $X\sim\Bin(n,p)$,
+		      \begin{align}
+			      G_\Bin(z)  & = (1-p + pz)^n       \\
+			      G'_\Bin(z) & = np(1-p + pz)^{n-1} \\
+			      G'_\Bin(1) & = np = \E[X]
+		      \end{align}
+		      Thus, $\E[X] = np$.
+		\item \textbf{Geometric Distribution:} Let $X\sim\Geo(p)$,
+		      \begin{align}
+			      G_\Geo(z)  & = \frac{pz}{1-z+pz}                      \\
+			      G'_\Geo(z) & = \frac{p(1-z+pz) - pz(p-1)}{(1-z+pz)^2} \\
+			                 & = \frac{p}{(1-z+pz)^2}                   \\
+			      G'_\Geo(1) & = \frac{p}{p^2} = \frac{1}{p} = \E[X]
+		      \end{align}
+		      Thus, $\E[X] = \frac{1}{p}$.
+		\item \textbf{Negative Binomial Distribution:} Let $X\sim\NegBin(n,p)$,
+		      \begin{align}
+			      G_\NegBin(z)  & = \left( \frac{pz}{1-z+pz} \right)^n \\
+			      G'_\NegBin(z) & = n\left( \frac{pz}{1-z+pz}
+			      \right)^{n-1}\left(\frac{p}{(1-z+pz)^2}\right)       \\
+			      G'_\NegBin(1) & = \frac{n}{p} = \E[X]
+		      \end{align}
+		      Thus, $\E[X] = \frac{n}{p}$.
+	\end{enumerate}
 \end{solution}
