@@ -1,3 +1,48 @@
 \begin{solution}
 	% Fill you solution here
+	\tcbsubtitle{Task A}
+		\textbf{To prove: }\\
+		\emph{Let $X$ be a continuous real-valued random variable with CDF  : $\mathbb{R} \rightarrow [0, 1]$. Assume that
+		$F_X$ is invertible. Then the random variable $Y := F_X (X) \in [0, 1]$ is uniformly distributed in $[0, 1]$}\\
+		\textbf{Proof:}\\
+		$F_X$ by definition can also be written as
+		\[F_X(x) = P(X\leq x)\]
+		Define a new random variable $Y$,
+		\[Y =F_X(X) \]
+		Y is the result of applying CDF $F_X$ to the random variable $X$.
+		To prove the theorem, assume $y\in [0,1]$. So, the probablity that $Y \leq y$ is:
+		\[P(Y\leq y) = P(F_X(X)\leq y)\]
+		It is assumed that $F_X(x)$ is invertible, so,
+		\[P(Y\leq y) = P(X\leq F_X^{-1}(y))\]
+		which is basically, probablity that $X$ is less that or equal to $F_X^{-1}(y)$. This can be written in the CDF form, which is $F_X(F_X^{-1}(y))$. So,
+		\[P(Y\leq y) = P(X\leq F_X^{-1}(y)) = F_X(F_X^{-1}(y)) = y\]
+		So,
+		\[P(Y\leq y) = y\]
+		where $y\in [0,1]$, which is the CDF of uniform distributon in $[0,1]$.
+	So, Y is a uniform distributon in $[0,1]$ regardless of $X$.
+	\tcbsubtitle{Task B}
+		According to the theorem proved above, CDF of any random variable $X$ mapped with itself gives a uniform
+		random variable $Y$ in $[0,1]$. So, let $Y\sim \text{Uniform}(0,1)$. Then for any random variable $X$,
+		\begin{align}
+			F_X(X) & = Y \\
+			X & = F_X^{-1}(Y)
+		\end{align}
+		\textbf{Algorithm $\mathcal{A}$:}
+		\begin{enumerate}
+			\item Input: A sample $y$ from the uniform distributon on $[0,1]$.
+			\item Transformation:
+			\begin{itemize}
+				\item Apply the inverse CDF to $y$ to compute a sample $u$.
+				\item Define $\mathcal{A}(u) = u = F_X^{-1}(y)$
+			\end{itemize}
+			\item Output: The random variable $U = F_X^{-1}(Y)$
+		\end{enumerate}
+		This gives us the correct required random variables as, CDF of U is $F_U(u)$,
+		\begin{align}
+			P(U\leq u ) & = P(F_X(Y) \leq u)\\
+			F_U(u) & =  P(F_X(F_X^{-1}(X) \leq u))\\
+			F_U(u) & =  P(X \leq u) \\
+			F_U(u) & =  F_X(u) \\ 
+		\end{align}
+		$U$ and $X$ have the same CDF, which was initially required.
 \end{solution}
