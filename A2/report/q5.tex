@@ -1,3 +1,84 @@
 \begin{solution}
-	% Fill your solution here
+
+	\tcbsubtitle{Task A}
+
+	Given, PDF of GMM variable $X$ is $f_X = \sum_{i=1}^K p_iP[X_i=x]$. Let
+	it's CDF be $F_X$. Then $F_X(x)$ is given by
+
+	\begin{align}
+		F_X(x) & = P[X\leq x]                                    \\
+		       & = \int_{-\infty}^{x} f_X(t)dt                   \\
+		       & = \int_{-\infty}^{x} \sum_{i=1}^K p_iP[X_i=t]dt \\
+		       & = \sum_{i=1}^K p_i\int_{-\infty}^{x} P[X_i=t]dt \\
+		       & = \sum_{i=1}^K p_iP[X_i\leq x]                  \\
+		       & = \sum_{i=1}^K p_iF_{X_i}(x)
+	\end{align}
+	Where $F_{X_i}(x) = P[X_i\leq x]$ is CDF of $X_i$.
+
+	Now, let CDF of output of the given algorithm be
+	$F_\A(x) = P[\A\leq x]$. Since the events that we choose $\A$ to be
+	from the distribution $i$ (say $E_i$) are disjoint for $i=1,\dots,k$.
+	\begin{align}
+		F_\A(x) & = P[\A\leq x]                                \\
+		        & = \sum_{i=1}^K P[E_i]\cdot P[\A\leq x | E_i] \\
+		        & = \sum_{i=1}^K p_iF_{X_i}(x)                 \\
+		        & = F_X(x)
+	\end{align}
+
+	We know that PDF of a random variable $X$ with CDF $F_X(x)$ is
+	$\frac{\partial F_X}{\partial x}$. Thus,
+	\begin{align}
+		f_\A(x) & = \frac{\partial F_\A}{\partial x} \\
+		        & = \frac{\partial F_X}{\partial x}  \\
+		        & = f_X
+	\end{align}
+
+	Since $x$ was arbitrary, for every $u\in\mathbb{R}$, $f_\A(u) =
+		f_X(u)$. i.e the algorithm indeed samples from the GMM variable's
+	distribution.
+
+
+	\tcbsubtitle{Task B}
+
+	Since $X_i\sim\N(\mu_i,\sigma_i^2)$, $\E[X_i] = \mu_i$ and $\Var[X_i] = \sigma_i^2$.
+	\begin{align}
+		\E[X] & = \int_{-\infty}^{\infty} t\cdot P[X=t]dt                    \\
+		      & = \int_{-\infty}^{\infty} t\cdot \sum_{i=1}^K p_iP[X_i=t] dt \\
+		      & = \sum_{i=1}^K p_i \int_{-\infty}^{\infty} P[X_i = t] dt     \\
+		      & = \sum_{i=1}^K p_i \E[X_i]                                   \\
+		      & = \sum_{i=1}^K p_i\mu_i
+	\end{align}
+
+	Let $\mu = \E[X]$.
+	\begin{align}
+		\Var[X] & = \int_{-\infty}^{\infty} (t-\mu)^2 P[X=t] dt                    \\
+		        & = \int_{-\infty}^{\infty} (t-\mu)^2 \sum_{i=1}^K p_iP[X_i=t] dt  \\
+		        & = \sum_{i=1}^K p_i \int_{-\infty}^{\infty} (t-\mu)^2 P[X_i=t] dt \\
+		        & = \sum_{i=1}^K p_i \Var[X_i]                                     \\
+		        & = \sum_{i=1}^K p_i\sigma_i^2
+	\end{align}
+
+	Let $\sigma^2 = \Var[X]$.
+	\begin{align}
+		\MGF_X(t) & = \int_{-\infty}^{\infty} e^{tX}P[X=x]dx                     \\
+		          & = \int_{-\infty}^{\infty} e^{tX} \sum_{i=1}^K p_iP[X_i=x] dx \\
+		          & = \sum_{i=1}^K p_i \int_{-\infty}^{\infty} e^{tX}P[X_i=x] dx \\
+		          & = \sum_{i=1}^K p_i\MGF_{X_i}(t)                              \\
+		          & = \sum_{i=1}^K p_i e^{t\mu_i + \frac{1}{2}t^2\sigma_i^2}
+	\end{align}
+
+	\tcbsubtitle{Task C}
+	Given $Z=\sum_{i=1}^Kp_iX_i$, where $X_i\sim\N(\mu_i,\sigma_i^2)$
+
+	\begin{align}
+		\E[Z] & = \E\left[\sum_{i=1}^Kp_iX_i\right] \\
+		      & = \sum_{i=1}^Kp_i\E[X_i]            \\
+		      & = \sum_{i=1}^Kp_i\mu_i
+	\end{align}
+
+	% \begin{align}
+	% 	\Var[Z] & = \Var[\sum_{i=1}^Kp_iX_i]    \\
+	% 	        & = \sum_{i=1}^Kp_i^2\Var[X_i]  \\
+	% 	        & = \sum_{i=1}^Kp_i^2\sigma_i^2
+	% \end{align}
 \end{solution}
