@@ -1,7 +1,7 @@
 \begin{solution}
 	% Fill you solution here
 	\tcbsubtitle{Task A}
-	Let $X\sim\Ber(p)$, PGF of $X$ is
+	When $X\sim\Ber(p)$, PGF of $X$ is
 	\begin{align}
 		G_\Ber(z) & = \E(z^X)                     \\
 		          & = \sum_{n=0}^\infty P[X=n]z^n
@@ -14,7 +14,7 @@
 	\end{align}
 
 	\tcbsubtitle{Task B}
-	Let $X\sim\Bin(n,p)$, PMF of $X$ is
+	When $X\sim\Bin(n,p)$, PMF of $X$ is
 	\begin{equation}
 		P[X=k] = \binom{n}{k}p^k(1-p)^{n-k} \text{  for  } k\leq n.
 	\end{equation}
@@ -30,7 +30,7 @@
 		(G_\Ber(z))^n$. Hence proved.
 
 	\tcbsubtitle{Task D}
-	Let $X\sim\Geo(p)$, PMF of $X$,
+	When $X\sim\Geo(p)$, PMF of $X$,
 	\begin{equation}
 		P[X=k] = (1-p)^{k-1}p
 	\end{equation}
@@ -45,7 +45,7 @@
 	\end{align}
 
 	\tcbsubtitle{Task E}
-	By equation \ref{en:pgfbin}, $G_\Bin(z) = (1-p + pz)^n = G_X^{(n,p)}(z)$. Let
+	By equation \ref{en:pgfbin}, $G_\Bin(z) = (1-p + pz)^n = G_X^{(n,p)}(z)$. For
 	$Y\sim\NegBin(n,p)$
 	\begin{align}
 		P[Y=k] = \binom{k-1}{n-1}p^n(1-p)^{k-n}
@@ -67,8 +67,8 @@
 	Hence Proved.
 
 	\tcbsubtitle{Task G}
-	\textbf{To prove:} \textit{Given PGF of a random variable $X$ is
-		$G(z)$, expectation of $X$ i.e $\E[X] = G'(1)$.}
+
+	\textbf{To prove:} \textit{Given PGF of a random variable $X$ is $G(z)$, expectation of $X$ i.e $\E(x) = G'(1)$}
 
 	\textbf{Proof:} \begin{align}
 		G(z)  & = \E(z^X) = \sum_{k=0}^\infty P[X=k]z^k \\

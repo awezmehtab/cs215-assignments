@@ -42,10 +42,43 @@
 
 	Since
 	\begin{align}
-		\E{X} & = \int_{-\infty}^{\infty} t\cdot P[X=t]dt                    \\
+		\E[X] & = \int_{-\infty}^{\infty} t\cdot P[X=t]dt                    \\
 		      & = \int_{-\infty}^{\infty} t\cdot \sum_{i=1}^K p_iP[X_i=t] dt \\
 		      & = \sum_{i=1}^K p_i \int_{-\infty}^{\infty} P[X_i = t] dt     \\
-		      & = \sum_{i=1}^K p_i \E{X_i}                                   \\
+		      & = \sum_{i=1}^K p_i \E[X_i]                                   \\
 		      & = \sum_{i=1}^K p_i\mu_i
 	\end{align}
+
+	Let $\mu = \E[X]$.
+	\begin{align}
+		\Var[X] & = \int_{-\infty}^{\infty} (t-\mu)^2 P[X=t] dt                    \\
+		        & = \int_{-\infty}^{\infty} (t-\mu)^2 \sum_{i=1}^K p_iP[X_i=t] dt  \\
+		        & = \sum_{i=1}^K p_i \int_{-\infty}^{\infty} (t-\mu)^2 P[X_i=t] dt \\
+		        & = \sum_{i=1}^K p_i \Var[X_i]                                     \\
+		        & = \sum_{i=1}^K p_i\sigma_i^2
+	\end{align}
+
+	Let $\sigma^2 = \Var[X]$.
+	\begin{align}
+		\MGF_X(t) & = \int_{-\infty}^{\infty} e^{tX}P[X=x]dx                     \\
+		          & = \int_{-\infty}^{\infty} e^{tX} \sum_{i=1}^K p_iP[X_i=x] dx \\
+		          & = \sum_{i=1}^K p_i \int_{-\infty}^{\infty} e^{tX}P[X_i=x] dx \\
+		          & = \sum_{i=1}^K p_i\MGF_{X_i}(t)                              \\
+		          & = \sum_{i=1}^K p_i e^{t\mu_i + \frac{1}{2}t^2\sigma_i^2}
+	\end{align}
+
+	\tcbsubtitle{Task C}
+	Given $Z=\sum_{i=1}^Kp_iX_i$, where $X_i\sim\N(\mu_i,\sigma_i^2)$
+
+	\begin{align}
+		\E[Z] & = \E\left[\sum_{i=1}^Kp_iX_i\right] \\
+		      & = \sum_{i=1}^Kp_i\E[X_i]            \\
+		      & = \sum_{i=1}^Kp_i\mu_i
+	\end{align}
+
+	% \begin{align}
+	% 	\Var[Z] & = \Var[\sum_{i=1}^Kp_iX_i]    \\
+	% 	        & = \sum_{i=1}^Kp_i^2\Var[X_i]  \\
+	% 	        & = \sum_{i=1}^Kp_i^2\sigma_i^2
+	% \end{align}
 \end{solution}
