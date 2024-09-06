@@ -1,3 +1,43 @@
 \begin{solution}
 	% Fill you solution here
+	\tcbsubtitle{Task D}
+	Given, PDF of Gamma-distribution $\text{Gamma}(k, \theta)$ is $f(x;k,\theta) =
+		\frac{1}{\theta^k\Gamma(k)}x^{k-1}e^{-\frac{x}{\theta}}$. First moment
+	of it is
+	\begin{align}
+		\mu_1^\text{Gamma} & = \E[X]                               \\
+		                   & = \int_{-\infty}^\infty
+		x\frac{1}{\theta^k\Gamma(k)}x^{k-1}e^{-\frac{x}{\theta}}dx
+		\\
+		                   & =
+		\frac{1}{\theta^k\Gamma(k)}\int_{-\infty}^\infty
+		x^ke^{-\frac{x}{\theta}}dx                                 \\
+		\intertext{Let $u = \frac{x}{\theta}$, then $\theta du = dx$}
+		                   & =
+		\frac{\theta}{\Gamma(k)}\int_{-\infty}^\infty
+		u^k e^{-u} du                                              \\
+		                   & = \frac{\theta\Gamma(k+1)}{\Gamma(k)}
+		\\
+		\intertext{Since $\Gamma(k+1)=k\Gamma(k)$}
+		                   & = k\theta
+	\end{align}
+
+	Second moment of it is
+	\begin{align}
+		\mu_2^\text{Gamma} & = \E[X^2]                               \\
+		                   & = \int_{-\infty}^\infty
+		x^2\frac{1}{\theta^k\Gamma(k)}x^{k-1}e^{-\frac{x}{\theta}}dx
+		\\
+		                   & =
+		\frac{1}{\theta^k\Gamma(k)}\int_{-\infty}^\infty
+		x^{k+1}e^{-\frac{x}{\theta}}dx                               \\
+		\intertext{Let $u = \frac{x}{\theta}$, then $\theta du = dx$}
+		                   & =
+		\frac{\theta^2}{\Gamma(k)}\int_{-\infty}^\infty
+		u^{k+1}e^{-u} du                                             \\
+		                   & = \frac{\theta^2\Gamma(k+2)}{\Gamma(k)}
+		\\
+		                   & = (k+1)k\theta^2
+	\end{align}
+	Thus, $\mu_1^\text{Gamma} = k\theta$, $\mu_2^\text{Gamma} = (k+1)k\theta^2$.
 \end{solution}
