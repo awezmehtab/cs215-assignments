@@ -41,8 +41,8 @@
 		P(Y\leq y) = y
 	\end{align}
 
-	where $y\in [0,1]$, which is the CDF of uniform distributon in $[0,1]$.
-	So, Y is a uniform distributon in $[0,1]$ regardless of $X$.
+	where $y\in [0,1]$, which is the CDF of uniform distribution in $[0,1]$.
+	So, Y is a uniform distribution in $[0,1]$ regardless of $X$.
 
 
 	\tcbsubtitle{Task B}
@@ -56,7 +56,7 @@
 
 	\textbf{Algorithm $\mathcal{A}$:}
 	\begin{enumerate}
-		\item Input: A sample $y$ from the uniform distributon on $[0,1]$.
+		\item Input: A sample $y$ from the uniform distribution on $[0,1]$.
 		\item Transformation:
 		      \begin{itemize}
 			      \item Apply the inverse CDF to $y$ to compute a sample $u$.
@@ -67,12 +67,17 @@
 
 	This gives us the correct required random variables as, CDF of U is $F_U(u)$,
 	\begin{align}
-		P(U\leq u ) & = P(F_X(Y) \leq u)            \\
-		F_U(u)      & =  P(F_X(F_X^{-1}(X) \leq u)) \\
-		F_U(u)      & =  P(X \leq u)                \\
+		P(U\leq u ) & = P(F_X^{-1}(Y) \leq u)            \\
+		F_U(u)      & =  P(Y \leq F_X(u)) \\
+	\end{align}
+	Since, $Y$ is a uniform random variable between 0 and 1,
+	\begin{align}
+		F_U(u)      & =  F_Y(F_X(u))                \\
 		F_U(u)      & =  F_X(u)                     \\
 	\end{align}
-	$U$ and $X$ have the same CDF, which was initially required.
+	Since, for any uniform random variable $P$ between 0 and 1,
+	\[F_P(x) = x\]
+	This proves that, $U$ and $X$ have the same CDF.
 
 	\tcbsubtitle{Task C}
 	The code can be found in \texttt{2c.py}. In this script, we generate random samples from a Gaussian distribution using the inverse transform sampling method. The function \texttt{sample(loc, scale)} begins by creating a sample, \texttt{x}, which consists of uniformly distributed random variables between 0 and 1, with a sample size of \texttt{N} (where \texttt{N} = $10^5$ or 100,000).
