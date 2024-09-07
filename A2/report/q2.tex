@@ -45,9 +45,7 @@
 	So, Y is a uniform distributon in $[0,1]$ regardless of $X$.
 
 
-
 	\tcbsubtitle{Task B}
-
 	According to the theorem proved above, CDF of any random variable $X$
 	mapped with itself gives a uniform random variable $Y$ in $[0,1]$. So,
 	let $Y\sim \text{Uniform}(0,1)$. Then for any random variable $X$,
@@ -74,45 +72,7 @@
 		F_U(u)      & =  P(X \leq u)                \\
 		F_U(u)      & =  F_X(u)                     \\
 	\end{align}
-
 	$U$ and $X$ have the same CDF, which was initially required.
-
-	\textbf{Proof:}\\
-	$F_X$ by definition can also be written as
-	\begin{align}
-		F_X(x) = P(X\leq x)
-	\end{align}
-
-	Define a new random variable $Y$,
-	\begin{align}
-		Y =F_X(X)
-	\end{align}
-
-	Y is the result of applying CDF $F_X$ to the random variable $X$.
-	To prove the theorem, assume $y\in [0,1]$. So, the probability that $Y \leq y$ is:
-	\begin{align}
-		P(Y\leq y) = P(F_X(X)\leq y)
-	\end{align}
-
-	It is assumed that $F_X(x)$ is invertible, so,
-	\begin{align}
-		P(Y\leq y) = P(X\leq F_X^{-1}(y))
-	\end{align}
-
-	which is basically, probability that $X$ is less that or equal to $F_X^{-1}(y)$. This can be written in the CDF form, which is $F_X(F_X^{-1}(y))$. So,
-	\begin{align}
-		P(Y\leq y) = P(X\leq F_X^{-1}(y)) = F_X(F_X^{-1}(y)) = y
-	\end{align}
-
-	So,
-	\begin{align}
-		P(Y\leq y) = y
-	\end{align}
-
-	where $y\in [0,1]$, which is the CDF of uniform distributon in $[0,1]$.
-	So, Y is a uniform distributon in $[0,1]$ regardless of $X$.
-
-
 
 	\tcbsubtitle{Task C}
 	The code can be found in \texttt{2c.py}. In this script, we generate random samples from a Gaussian distribution using the inverse transform sampling method. The function \texttt{sample(loc, scale)} begins by creating a sample, \texttt{x}, which consists of uniformly distributed random variables between 0 and 1, with a sample size of \texttt{N} (where \texttt{N} = $10^5$ or 100,000).
@@ -148,13 +108,12 @@ Inside the function, the variable steps is a matrix with \texttt{N} rows and \te
 			\centering
 			\includegraphics[width=\linewidth]{../images/2d2.png}
 			\caption{Height = 50}
-		\end{minipage}\hfill		
+		\end{minipage}\hfill
 	\end{figure}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth]{../images/2d3.png}
-		\caption{Height = 100}
-		
+		\caption{Height = 100}		
 	\end{figure}
 
 	The shape of the tops of the histogram closely resembles a Gaussian distribution. As the height (\texttt{h}) of the Galton board increases, the distribution becomes smoother and more bell-shaped, indicating that most balls tend to fall around the center pockets.
