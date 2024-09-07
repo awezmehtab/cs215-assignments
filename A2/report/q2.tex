@@ -113,34 +113,6 @@
 	So, Y is a uniform distributon in $[0,1]$ regardless of $X$.
 
 
-	\tcbsubtitle{Task B}
-	According to the theorem proved above, CDF of any random variable $X$
-	mapped with itself gives a uniform random variable $Y$ in $[0,1]$. So,
-	let $Y\sim \text{Uniform}(0,1)$. Then for any random variable $X$,
-	\begin{align}
-		F_X(X) & = Y           \\
-		X      & = F_X^{-1}(Y)
-	\end{align}
-
-	\textbf{Algorithm $\mathcal{A}$:}
-	\begin{enumerate}
-		\item Input: A sample $y$ from the uniform distributon on $[0,1]$.
-		\item Transformation:
-		      \begin{itemize}
-			      \item Apply the inverse CDF to $y$ to compute a sample $u$.
-			      \item Define $\mathcal{A}(u) = u = F_X^{-1}(y)$
-		      \end{itemize}
-		\item Output: The random variable $U = F_X^{-1}(Y)$
-	\end{enumerate}
-
-	This gives us the correct required random variables as, CDF of U is $F_U(u)$,
-	\begin{align}
-		P(U\leq u ) & = P(F_X(Y) \leq u)            \\
-		F_U(u)      & =  P(F_X(F_X^{-1}(X) \leq u)) \\
-		F_U(u)      & =  P(X \leq u)                \\
-		F_U(u)      & =  F_X(u)                     \\
-	\end{align}
-	$U$ and $X$ have the same CDF, which was initially required.
 
 	\tcbsubtitle{Task C}
 	The code can be found in \texttt{2c.py}. In this script, we generate random samples from a Gaussian distribution using the inverse transform sampling method. The function \texttt{sample(loc, scale)} begins by creating a sample, \texttt{x}, which consists of uniformly distributed random variables between 0 and 1, with a sample size of \texttt{N} (where \texttt{N} = $10^5$ or 100,000).
@@ -167,22 +139,22 @@ Inside the function, the variable steps is a matrix with \texttt{N} rows and \te
 	For the simulation, $1000$ balls are dropped for different values of \texttt{h} (the depth of the board). The resulting distributions for each value of h are visualized as histograms, with the x-axis representing the final positions (pockets) and the y-axis showing the probability of balls falling into each pocket. The results for different values of h are shown below.
 	\begin{figure}[H]
 		\centering
-		\begin{minipage}{0.32\textwidth}
+		\begin{minipage}{0.5\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{../images/2d1.png}
 			\caption{Height = 10}
 		\end{minipage}\hfill
-		\begin{minipage}{0.32\textwidth}
+		\begin{minipage}{0.5\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{../images/2d2.png}
 			\caption{Height = 50}
-		\end{minipage}\hfill
-		\begin{minipage}{0.32\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{../images/2d3.png}
-			\caption{Height = 100}
-		\end{minipage}
-		\caption{Galton board simulations for different heights}
+		\end{minipage}\hfill		
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{../images/2d3.png}
+		\caption{Height = 100}
+		
 	\end{figure}
 
 	The shape of the tops of the histogram closely resembles a Gaussian distribution. As the height (\texttt{h}) of the Galton board increases, the distribution becomes smoother and more bell-shaped, indicating that most balls tend to fall around the center pockets.
