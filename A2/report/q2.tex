@@ -1,32 +1,61 @@
 \begin{solution}
-	% Fill you solution here
+
+
 	\tcbsubtitle{Task A}
-	\textbf{To prove: }\\
+
+	\textbf{To prove: }
+
 	\emph{Let $X$ be a continuous real-valued random variable with CDF  : $\mathbb{R} \rightarrow [0, 1]$. Assume that
-		$F_X$ is invertible. Then the random variable $Y := F_X (X) \in [0, 1]$ is uniformly distributed in $[0, 1]$}\\
+		$F_X$ is invertible. Then the random variable $Y := F_X (X) \in [0, 1]$ is uniformly distributed in $[0, 1]$}
+
 	\textbf{Proof:}\\
 	$F_X$ by definition can also be written as
-	\[F_X(x) = P(X\leq x)\]
+	\begin{align}
+		F_X(x) = P(X\leq x)
+	\end{align}
+
 	Define a new random variable $Y$,
-	\[Y =F_X(X) \]
-	Y is the result of applying CDF $F_X$ to the random variable $X$.
-	To prove the theorem, assume $y\in [0,1]$. So, the probablity that $Y \leq y$ is:
-	\[P(Y\leq y) = P(F_X(X)\leq y)\]
+	\begin{align}
+		Y =F_X(X)
+	\end{align}
+
+	Y is the result of applying CDF $F_X$ to the random variable $X$. To
+	prove the theorem, assume $y\in [0,1]$. So, the probablity that $Y \leq
+		y$ is:
+	\begin{align}
+		P(Y\leq y) = P(F_X(X)\leq y)
+	\end{align}
+
 	It is assumed that $F_X(x)$ is invertible, so,
-	\[P(Y\leq y) = P(X\leq F_X^{-1}(y))\]
+	\begin{align}
+		P(Y\leq y) = P(X\leq F_X^{-1}(y))
+	\end{align}
+
 	which is basically, probablity that $X$ is less that or equal to $F_X^{-1}(y)$. This can be written in the CDF form, which is $F_X(F_X^{-1}(y))$. So,
-	\[P(Y\leq y) = P(X\leq F_X^{-1}(y)) = F_X(F_X^{-1}(y)) = y\]
+	\begin{align}
+		P(Y\leq y) = P(X\leq F_X^{-1}(y)) = F_X(F_X^{-1}(y)) = y
+	\end{align}
+
 	So,
-	\[P(Y\leq y) = y\]
+	\begin{align}
+		P(Y\leq y) = y
+	\end{align}
+
 	where $y\in [0,1]$, which is the CDF of uniform distributon in $[0,1]$.
 	So, Y is a uniform distributon in $[0,1]$ regardless of $X$.
+
+
+
 	\tcbsubtitle{Task B}
-	According to the theorem proved above, CDF of any random variable $X$ mapped with itself gives a uniform
-	random variable $Y$ in $[0,1]$. So, let $Y\sim \text{Uniform}(0,1)$. Then for any random variable $X$,
+
+	According to the theorem proved above, CDF of any random variable $X$
+	mapped with itself gives a uniform random variable $Y$ in $[0,1]$. So,
+	let $Y\sim \text{Uniform}(0,1)$. Then for any random variable $X$,
 	\begin{align}
 		F_X(X) & = Y           \\
 		X      & = F_X^{-1}(Y)
 	\end{align}
+
 	\textbf{Algorithm $\mathcal{A}$:}
 	\begin{enumerate}
 		\item Input: A sample $y$ from the uniform distributon on $[0,1]$.
@@ -37,6 +66,7 @@
 		      \end{itemize}
 		\item Output: The random variable $U = F_X^{-1}(Y)$
 	\end{enumerate}
+
 	This gives us the correct required random variables as, CDF of U is $F_U(u)$,
 	\begin{align}
 		P(U\leq u ) & = P(F_X(Y) \leq u)            \\
@@ -44,30 +74,54 @@
 		F_U(u)      & =  P(X \leq u)                \\
 		F_U(u)      & =  F_X(u)                     \\
 	\end{align}
+
 	$U$ and $X$ have the same CDF, which was initially required.
+
 	\textbf{Proof:}\\
 	$F_X$ by definition can also be written as
-	\[F_X(x) = P(X\leq x)\]
+	\begin{align}
+		F_X(x) = P(X\leq x)
+	\end{align}
+
 	Define a new random variable $Y$,
-	\[Y =F_X(X) \]
+	\begin{align}
+		Y =F_X(X)
+	\end{align}
+
 	Y is the result of applying CDF $F_X$ to the random variable $X$.
 	To prove the theorem, assume $y\in [0,1]$. So, the probability that $Y \leq y$ is:
-	\[P(Y\leq y) = P(F_X(X)\leq y)\]
+	\begin{align}
+		P(Y\leq y) = P(F_X(X)\leq y)
+	\end{align}
+
 	It is assumed that $F_X(x)$ is invertible, so,
-	\[P(Y\leq y) = P(X\leq F_X^{-1}(y))\]
+	\begin{align}
+		P(Y\leq y) = P(X\leq F_X^{-1}(y))
+	\end{align}
+
 	which is basically, probability that $X$ is less that or equal to $F_X^{-1}(y)$. This can be written in the CDF form, which is $F_X(F_X^{-1}(y))$. So,
-	\[P(Y\leq y) = P(X\leq F_X^{-1}(y)) = F_X(F_X^{-1}(y)) = y\]
+	\begin{align}
+		P(Y\leq y) = P(X\leq F_X^{-1}(y)) = F_X(F_X^{-1}(y)) = y
+	\end{align}
+
 	So,
-	\[P(Y\leq y) = y\]
+	\begin{align}
+		P(Y\leq y) = y
+	\end{align}
+
 	where $y\in [0,1]$, which is the CDF of uniform distributon in $[0,1]$.
 	So, Y is a uniform distributon in $[0,1]$ regardless of $X$.
+
+
 	\tcbsubtitle{Task B}
-	According to the theorem proved above, CDF of any random variable $X$ mapped with itself gives a uniform
-	random variable $Y$ in $[0,1]$. So, let $Y\sim \text{Uniform}(0,1)$. Then for any random variable $X$,
+	According to the theorem proved above, CDF of any random variable $X$
+	mapped with itself gives a uniform random variable $Y$ in $[0,1]$. So,
+	let $Y\sim \text{Uniform}(0,1)$. Then for any random variable $X$,
 	\begin{align}
 		F_X(X) & = Y           \\
 		X      & = F_X^{-1}(Y)
 	\end{align}
+
 	\textbf{Algorithm $\mathcal{A}$:}
 	\begin{enumerate}
 		\item Input: A sample $y$ from the uniform distributon on $[0,1]$.
@@ -78,6 +132,7 @@
 		      \end{itemize}
 		\item Output: The random variable $U = F_X^{-1}(Y)$
 	\end{enumerate}
+
 	This gives us the correct required random variables as, CDF of U is $F_U(u)$,
 	\begin{align}
 		P(U\leq u ) & = P(F_X(Y) \leq u)            \\
@@ -86,32 +141,63 @@
 		F_U(u)      & =  F_X(u)                     \\
 	\end{align}
 	$U$ and $X$ have the same CDF, which was initially required.
+
 
 
 	\tcbsubtitle{Task E(B)}
-	We have a random variable $X$ which can take values from $\{-h,-h+2,\ldots,h-2,h\}$. Each ball makes $h$ random binary decisions(left or right) as it descends. If we let $Y$ be the number of times the ball moves right, the final position of the ball will be given by,
-	\[X = -h+2Y\]
+	We have a random variable $X$ which can take values from
+	$\{-h,-h+2,\ldots,h-2,h\}$. Each ball makes $h$ random binary
+	decisions(left or right) as it descends. If we let $Y$ be the number of
+	times the ball moves right, the final position of the ball will be
+	given by,
+	\begin{align}
+		X = -h+2Y
+	\end{align}
+
 	where $Y$ is a \textbf{binomial variable} because in simple terms it is the summation of $h$ bernoulli decisions each with probability $\frac{1}{2}$.
-	\[Y \sim \text{Binomial}(h,\frac{1}{2})\]
+	\begin{align}
+		Y \sim \Bin(h,\frac{1}{2})
+	\end{align}
+
 	For a particular pocket $X = 2i$, the corresponding value of Y is:
-	\[Y = \frac{h+2i}{2}\]
-	Thus, the probability that the ball lands in the pocket $X=2i$ is the probability that $Y = \frac{h+2i}{2}$. Using Binmial distribution, this is:
-	\[P_h[X=2i]=P_h\left[Y=\frac{h+2i}{2}\right]=\binom{h}{\frac{h+2i}{2}}\left(\frac{1}{2}\right)^h\]
+	\begin{align}
+		Y = \frac{h+2i}{2}
+	\end{align}
+
+	Thus, the probability that the ball lands in the pocket $X=2i$ is the
+	probability that $Y = \frac{h+2i}{2}$. Using Binmial distribution, this
+	is:
+	\begin{align}
+		P_h[X=2i]=P_h\left[Y=\frac{h+2i}{2}\right]=\binom{h}{\frac{h+2i}{2}}\left(\frac{1}{2}\right)^h
+	\end{align}
+
 	This is the \textbf{closed form expression for $P_h[X=2i]$}
 
 	Now, we need to show $P_h[X=2i]$ approximates to normal distribution for very large $h$.\\
 	Using \textbf{stiriling's approximation} for large $n$, which states that:
-	\[n!\approx \sqrt[]{2\pi n}\left(\frac{n}{2}\right)^n\]
+	\begin{align}
+		n!\approx \sqrt[]{2\pi n}\left(\frac{n}{2}\right)^n
+	\end{align}
 	We can convert the factorials in the binomial coefficient:
-	\[\binom{h}{r} \approx \frac{h!}{r!(h-r)!}\]
+	\begin{align}
+		\binom{h}{r} \approx \frac{h!}{r!(h-r)!}
+	\end{align}
 	Using stirlings approximation, we have,
-	\[\binom{h}{y} = \frac{\sqrt[]{2\pi h}\left(\frac{h}{e}\right)^h}{\sqrt[]{2\pi y}\left(\frac{y}{e}\right)^y\cdot \sqrt[]{2\pi(h-y)}\left(\frac{h-y}{e}\right)^{h-y}}\]
+	\begin{align}
+		\binom{h}{y} = \frac{\sqrt[]{2\pi h}\left(\frac{h}{e}\right)^h}{\sqrt[]{2\pi y}\left(\frac{y}{e}\right)^y\cdot \sqrt[]{2\pi(h-y)}\left(\frac{h-y}{e}\right)^{h-y}}
+	\end{align}
 	where $y = \frac{h+2i}{2}$
 	For large $h$, we can simplify this assuming small $i$ (relative to $h$). In particular, $\frac{h+2i}{2}$ can be written as $\frac{h}{2}$, leading to:
-	\[\binom{h}{\frac{h+2i}{2}} \approx \frac{2^h}{\sqrt[]{\pi h}}e^{-\frac{2i^2}{h}}\]
+	\begin{align}
+		\binom{h}{\frac{h+2i}{2}} \approx \frac{2^h}{\sqrt[]{\pi h}}e^{-\frac{2i^2}{h}}
+	\end{align}
 	Substituting it back in $P_h$ gives:
-	\[P_h[X=2i]\approx \frac{2^h}{\sqrt[]{\pi h}}e^{-\frac{2i^2}{h}}\left(\frac{1}{2}\right)^h \]
+	\begin{align}
+		P_h[X=2i]\approx \frac{2^h}{\sqrt[]{\pi h}}e^{-\frac{2i^2}{h}}\left(\frac{1}{2}\right)^h
+	\end{align}
 	Simplifying the powers of 2 gives:
-	\[P_h[X=2i]\approx \frac{1}{\sqrt[]{\pi h}}e^{-\frac{2i^2}{h}} \]
+	\begin{align}
+		P_h[X=2i]\approx \frac{1}{\sqrt[]{\pi h}}e^{-\frac{2i^2}{h}}
+	\end{align}
 	which is basically normal distribution with $\mu = 0$ and $\sigma^2=h/2$
 \end{solution}
