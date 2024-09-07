@@ -3,11 +3,9 @@
 # Shaik Awez Mehtab, 23B1080
 # Problem number 2, task C
 
-# Importing the libraries
 import numpy as np
-from scipy.stats import norm, gaussian_kde
+from scipy.stats import norm
 import matplotlib.pyplot as plt
-
 
 N = int(1e5)
 
@@ -16,23 +14,23 @@ def sample(loc, scale):
     F_X_inverse = norm.ppf(x, loc=loc, scale=scale)
     return F_X_inverse
 
-
 params = [(0, 0.2), (0, 1.0), (0, 5.0), (-2, 0.5)]
-samples = [sample(mu, sigma) for mu, sigma in params]
+samples = [sample(mu, np.sqrt(sigma2)) for mu, sigma2 in params]
 
-
-x = np.linspace(-5, 5, 1000)
 plt.figure(figsize=(10, 6))
 
-for (mu, sigma), samplei in zip(params, samples):    
-    kde = gaussian_kde(samplei, bw_method=0.1)
-    plt.plot(x, kde(x), label=f'μ={mu}, σ={sigma}')
+for (mu, sigma), samplei in zip(params, samples):
+    plt.hist(samplei, bins=500, density=True, alpha=0.6, label=f'μ={mu}, σ={sigma}')
 
-plt.title('Probability Density Functions of Gaussians')
+plt.xlim(-5, 5)
+
+plt.title('Gaussian Distribution')
 plt.xlabel('X')
-plt.ylabel('φ(x)')
+plt.ylabel('Frequency Density')
 plt.legend()
 plt.grid(True)
-plt.savefig('../images/2C.png')
+
+
+plt.savefig('../images/2c.png')
 plt.show()
 

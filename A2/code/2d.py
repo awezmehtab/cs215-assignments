@@ -1,28 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def galton_board(h):
-    position = 0
-    for i in range(0,h):
-        position += np.random.choice([-1,1],1,p=[0.5,0.5])
-    return position
+def galton_board(h, N):
+    steps = np.random.choice([-1, 1], size=(N, h))
+    positions = np.sum(steps, axis=1)
+    return positions
 
 N = 1000
-heights = [10,50,100]
+heights = [10, 50, 100]
 
-for idx,h in enumerate(heights):
-    freq = np.zeros(2*h+1)
-    for i in range(N):
-        freq[galton_board(h)+h]+=1
+
+for idx, h in enumerate(heights):
+    positions = galton_board(h, N)
+    freq, bins = np.histogram(positions, bins=np.arange(-h, h+2), density=True)
+    
     plt.figure()
-    plt.bar(range(-h, h+1), freq, align='center')
+    plt.bar(bins[:-1], freq, align='center', width=1)
     plt.xlabel('Final Position')
     plt.ylabel('Probability')
     plt.title(f'Distribution for h = {h}')
-    if idx == 0:
-        plt.savefig('../images/2d1.png')
-    elif idx == 1:
-        plt.savefig('../images/2d2.png')
-    else:
-        plt.savefig('../images/2d3.png')
+    
+    plt.savefig(f'../images/2d{idx+1}.png')
     plt.show()

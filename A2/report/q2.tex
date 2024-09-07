@@ -142,7 +142,50 @@
 	\end{align}
 	$U$ and $X$ have the same CDF, which was initially required.
 
+	\tcbsubtitle{Task C}
+	The code can be found in \texttt{2c.py}. In this script, we generate random samples from a Gaussian distribution using the inverse transform sampling method. The function \texttt{sample(loc, scale)} begins by creating a sample, \texttt{x}, which consists of uniformly distributed random variables between 0 and 1, with a sample size of \texttt{N} (where \texttt{N} = $10^5$ or 100,000).
 
+	These uniform samples, \texttt{x}, are then transformed into samples from a Gaussian (normal) distribution by passing them through the inverse cumulative distribution function (CDF) of the normal distribution, implemented via \texttt{norm.ppf}. The arguments \texttt{loc} and \texttt{scale} represent the mean and standard deviation of the Gaussian distribution, respectively. This transformation effectively maps the uniform samples to samples drawn from the specified Gaussian distribution, as demonstrated theoretically in previous sections.
+
+	We then define the list \texttt{params}, which contains tuples of means and variances for the Gaussian distributions we wish to sample from and plot. For each set of parameters, the \texttt{sample()} function is called, and the resulting samples are stored in the \texttt{samples} list.
+
+	Finally, we loop over the pairs of parameters (\texttt{params}) and their corresponding samples (\texttt{samples}) to create a histogram for each distribution. The histograms are plotted with 500 bins, and the density is normalized. A legend is included to indicate the mean (\texttt{$\mu$}) and standard deviation (\texttt{$\sigma$}) for each distribution.
+
+	Below is the resulting histogram:
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{../images/2c.png}
+		\caption{Histograms of Gaussian distributions for different means and variances}
+		\label{fig:gaussian_hist}
+	\end{figure}
+	
+	\tcbsubtitle{Task D}
+	The code for simulating the Galton board is found in \texttt{2d.py}. We implemented a function called \texttt{galton\_board}, which takes two parameters: \texttt{h}, representing the depth of the Galton board (number of pegs the ball hits), and \texttt{N}, the number of balls dropped.
+
+Inside the function, the variable steps is a matrix with \texttt{N} rows and \texttt{h} columns. Each row corresponds to a ball, and each column represents a decision the ball makes at a peg. At each step, the ball either moves left, represented by $-1$, or right, represented by $1$. The final position of each ball is determined by summing all its steps, which is stored in the 1-D array positions. This array records the final pocket into which each ball falls.
+
+	For the simulation, $1000$ balls are dropped for different values of \texttt{h} (the depth of the board). The resulting distributions for each value of h are visualized as histograms, with the x-axis representing the final positions (pockets) and the y-axis showing the probability of balls falling into each pocket. The results for different values of h are shown below.
+	\begin{figure}[H]
+		\centering
+		\begin{minipage}{0.32\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{../images/2d1.png}
+			\caption{Height = 10}
+		\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{../images/2d2.png}
+			\caption{Height = 50}
+		\end{minipage}\hfill
+		\begin{minipage}{0.32\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{../images/2d3.png}
+			\caption{Height = 100}
+		\end{minipage}
+		\caption{Galton board simulations for different heights}
+	\end{figure}
+
+	The shape of the tops of the histogram closely resembles a Gaussian distribution. As the height (\texttt{h}) of the Galton board increases, the distribution becomes smoother and more bell-shaped, indicating that most balls tend to fall around the center pockets.
 
 	\tcbsubtitle{Task E(B)}
 	We have a random variable $X$ which can take values from
