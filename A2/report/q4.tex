@@ -1,6 +1,83 @@
 \begin{solution}
-	% Fill you solution here
-	\tcbsubtitle{Task D}
+	\tcbsubtitle{Task A}
+ We can write 
+ \begin{equation}
+     \mathop{\mathbb{E}}[X]= P\{X<a\}\cdot \mathop{\mathbb{E}}[X|X<a]+P\{X\geq a\}\cdot  \mathop{\mathbb{E}}[X|X\geq a].
+ \end{equation}
+ where $\mathop{\mathbb{E}}[X|X<a]$ is greater than zero and as random variable $X $ is non negative and $\mathop{\mathbb{E}}[X|X\geq a]$ is greater than or equal to $a$ since conditional expression only accounts for values greater than equal to $a$. Therefore, we can say
+ \begin{equation}
+     \mathop{\mathbb{E}}[X]\geq P\{X\geq a\}\cdot  \mathop{\mathbb{E}}[X|X\geq a]
+ \end{equation}
+ which leads to 
+ \begin{align}   
+     \mathop{\mathbb{E}}[X] &\geq a\cdot P\{X\geq a\}\\
+     P\{X\geq a\} &\leq \frac{\mathop{\mathbb{E}}[X]}{a}
+ \end{align}
+
+ \textbf{Formal Proof} \\
+ For non negative continuous random variable with density $f$, we can write the expected value as 
+ \begin{align} 
+     \mathop{\mathbb{E}}[X]&=\int_{0}^{\infty}xf(x)dx \\
+     & = \int_{0}^{a}xf(x)dx + \int_{a}^{\infty}xf(x)dx \\
+     & \geq \int_{a}^{\infty}xf(x)dx \\
+     & \geq \int_{a}^{\infty}af(x)dx \\
+     &= a \int_{a}^{\infty}f(x)dx \\
+     &=aP\{X\geq a\} \\
+     \implies \mathop{\mathbb{E}}[X]& \geq aP\{X\geq a\}\\
+     \implies P\{X\geq a\} &\leq \frac{\mathop{\mathbb{E}}[X]}{a}
+ \end{align}
+ Hence we arrive at our required relation.
+     
+ \tcbsubtitle{Task B}
+ To prove:
+ \begin{equation}
+     P\big[X- \mu \geq \tau \big] \leq \frac{\sigma^2}{\sigma^2+\tau^2}
+ \end{equation}
+for every $\tau >0$ where $X$ is a random variable with mean $\mu$ and variance $\sigma^2$. \\
+\par Let $Y=X-\mu$. So,we have 
+\begin{align}
+    P[Y\geq \tau]&=P[Y+\mu \geq \tau+\mu] \leq P[(Y+\mu)^2\geq (\tau+\mu)^2]\\
+    \implies P[Y\geq \tau]&\leq \frac{\mathop{\mathbb{E}}[(Y+\mu)^2]}{(\tau+\mu)^2} \\
+    \implies P[Y\geq \tau]&\leq \frac{\sigma^2+\mu^2}{(\tau+\mu)^2} \:\:\: \text{since $E[(Y+\mu)^2]$ is $E[X^2]$} 
+\end{align}
+Since this probability holds for all $\mu$ and $\tau$, we can put $\mu=\frac{\sigma^2}{\tau}$ to minimise the function by differentiating and we have
+\begin{align}
+    P[Y\geq \tau]& \leq \frac{\sigma^{2}(\tau^2+\sigma^2)}{(\sigma^2+\tau^2)^2}\\
+    \implies P[Y\geq \tau]& \leq \frac{\sigma^{2}}{\sigma^2+\tau^2}
+\end{align}
+Hence proved.
+ \tcbsubtitle{Task C}
+ To show:
+ \begin{align}
+     P[X\geq x]&\leq e^{-tx}M_{x}(t) \:\:\forall t>0 \\
+     P[X\leq x]&\leq e^{-tx}M_{x}(t) \:\:\forall t<0     
+ \end{align}
+ From markov inequality, we know that for a non negative random variable $X$ and value $x>0$, we can write  
+ \begin{align}
+     P[X\geq x]\leq \frac{E[X]}{x}
+ \end{align}
+ Using the fact that $e^{tx}$ is always positive, we can write $P(e^{tX}\geq e^{tx})$ same as $P(X>=x)$, we get:
+ \begin{align}
+     P(X\geq x)\leq \frac{\mathop{\mathbb{E}}[e^{tX}]}{e^{tx}}
+ \end{align}
+ By definition, we know $\mathop{\mathbb{E}}[e^{tX}]=M_{X}(t)$, therefore
+ \begin{equation}
+      P(X\geq x)\leq \frac{M_{X}(t)}{e^{tx}}=e^{-tx}M_{X}(t)
+ \end{equation}
+ For second part, since we need to prove for $t<0$ and we want to bound the probability $P(X\leq x)$, we can rewrite it as 
+ \begin{equation}
+     P(X \leq x) = P(-X\geq -x)
+ \end{equation}
+ Using markov's inequality on $e^{t(-X)}=e^{-tX}$ (Since $t<0$) 
+ \begin{equation}
+     P(e^{-tX}\geq e^{-tx})\leq \frac{\mathop{\mathbb{E}}[e^{-tX}]}{e^{-tx}}
+ \end{equation}
+ Now substituting $\mathop{\mathbb{E}}[e^{-tX}]=M_{X}(-t)$ and $- t$ with $t$ since $t<0$ we get 
+ \begin{equation}
+     P(X\leq x)\leq e^{-tx}M_{X}(t)
+ \end{equation}
+ Hence both proofs are finished under given conditions.
+ \tcbsubtitle{Task D}
 	We are given $Y = \sum^n_{i=1}X_i$, where each $X_i$ is an independent Bernoulli random variable with $\mathds{E}[X_i] = p_i$ 
 	\subsection*{1. Expectation of $Y$}
 	The new random variable $Y$ is given by:
@@ -42,6 +119,4 @@
 		P[X\geq (1+\delta)\mu] & \leq \frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}
 	\end{align}
 	This completes the proof
-	
-		
 \end{solution}
