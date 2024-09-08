@@ -40,8 +40,25 @@
 		P[X\geq (1+\delta)\mu] & \leq \frac{e^{\sum_{i=1}^{n}p_i(e^t-1)}}{e^{t(1+\delta)\mu}}\\
 		P[X\geq (1+\delta)\mu] & \leq \frac{e^{(e^t-1)\sum_{i=1}^{n}p_i}}{e^{(1+\delta)t\mu}}\\
 		P[X\geq (1+\delta)\mu] & \leq \frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}
+		\label{en:q4dineq}
 	\end{align}
 	This completes the proof
-	
+	\section*{3. Improving bound}
+	To improve bound, we have to minimise the right hand term in \ref{en:q4dineq}. As it is a continuous functions, we can differentiate it to get a minima. Let the RHS be $f(t)$
+	\[\diff{f}{t} = \diff{\frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}}{t}\]
+	For minima, $\diff{f}{t} $ should be 0.
+	\begin{align}
+		\diff{\frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}}{t} & = 0 \\
+		\frac{(e^{(1+\delta)t\mu})\diff{e^{(e^t-1)\mu}}{t}- e^{(e^t-1)\mu}\diff{e^{(1+\delta)t\mu}}{t}}{{(e^{(1+\delta)t\mu})}^2} & = 0 \\
+		(e^{(1+\delta)t\mu})(e^{(e^t-1)\mu})(\mu e^t) - (e^{(e^t-1)\mu})((e^{(1+\delta)t\mu}))(1+\delta)\mu & = 0 \\
+		e^t - (1+\delta) & = 0 \\
+		t & = \ln(1+\delta)
+	\end{align}
+	The improved bound will be,
+	\[f(\ln(1+\delta)) = \frac{e^{(e^{\ln(1+\delta)}-1)\mu}}{e^{(1+\delta){\ln(1+\delta)}\mu}}\]
+	On further calculation, we get,
+	\[f(\ln(1+\delta)) = \frac{e^{\delta \mu}}{(1+\delta)^{(1+\delta)\mu}}\]
+	Finally,
+	\[P[X\geq (1+\delta)\mu] \leq \frac{e^{\delta \mu}}{(1+\delta)^{(1+\delta)\mu}}\]
 		
 \end{solution}
