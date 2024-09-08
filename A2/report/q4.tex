@@ -1,3 +1,47 @@
 \begin{solution}
 	% Fill you solution here
+	\tcbsubtitle{Task D}
+	We are given $Y = \sum^n_{i=1}X_i$, where each $X_i$ is an independent Bernoulli random variable with $\mathds{E}[X_i] = p_i$ 
+	\subsection*{1. Expectation of $Y$}
+	The new random variable $Y$ is given by:
+	\[Y = \sum^n_{i=1}X_i\]
+	Using the liniearity of expectation, the expectation of $Y$ is:
+	\[\mathds{E}[X_i] = \mathds{E}\left[\sum_{i=1}^{n}\right] = \sum_{i=1}^{n}\mathds{E}[X_i] = \sum_{i=1}^{n}p_i\]
+	Let $\mu = \sum_{i=1}^{n}p_i$, So $\mathds{E}[Y]=\mu$
+	\subsection*{2. Proof}
+	From previous subparts, we know
+	\[P[X\geq x]\leq e^{-tx}M_X(t) \text{ for all } t>0\]
+	where $M_X(t)$ is the MGF.
+	\begin{align}
+		M_Y(t) & = \mathds{E}[e^{tY}]\\
+		& = \mathds{E}[e^{t\sum_{i=1}^{n}X_i}]\\
+		& = \mathds{E}\left[\prod_{i=1}^{n}e^{tX_i}\right]
+	\end{align}
+	Using the independence of each $X_i$, we can write the expecatation of product as product of expectation,
+	\begin{align}
+		M_Y(t) & = \prod_{i=1}^{n}\mathds{E}[e^{tX_i}]\\
+		& = \prod_{i=1}^{n}M_{X_i}
+	\end{align}
+	MGF of a Bernoulli random variable is 
+	\[M_{X_i} = p_ie^t+(1-p_i)\]
+	So,
+	\[
+		M_Y(t) = \prod_{i=1}^{n}(p_ie^t+(1-p_i))
+	\]
+	Putting it back into the inequality,
+	\[P[X\geq (1+\delta)\mu]\leq \frac{\prod_{i=1}^{n}(p_ie^t+(1-p_i))}{e^{t(1+\delta)\mu}}\]
+	We know that, $1+x \leq e^x$. Substituting $x$ with $p_i(e^t-1)$, we get:
+	\[1+p_i(e^t-1) \leq e^{p_i(e^t-1)}\]
+	Rearranging terms,
+	\[p_ie^t + (1-p_i) \leq e^{p_i(e^t-1)} \]
+	So,
+	\begin{align}
+		P[X\geq (1+\delta)\mu] & \leq \frac{\prod_{i=1}^{n}e^{p_i(e^t-1)}}{e^{t(1+\delta)\mu}} \\
+		P[X\geq (1+\delta)\mu] & \leq \frac{e^{\sum_{i=1}^{n}p_i(e^t-1)}}{e^{t(1+\delta)\mu}}\\
+		P[X\geq (1+\delta)\mu] & \leq \frac{e^{(e^t-1)\sum_{i=1}^{n}p_i}}{e^{(1+\delta)t\mu}}\\
+		P[X\geq (1+\delta)\mu] & \leq \frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}
+	\end{align}
+	This completes the proof
+	
+		
 \end{solution}
