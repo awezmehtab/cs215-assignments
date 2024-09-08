@@ -110,10 +110,14 @@
 		\label{en:pgfnegbin}
 	\end{align}
 	\begin{align}
-		G_X^{(n,p^{-1})}(z^{-1})                   & = \left(1-\frac{1}{p} + \frac{1}{pz}\right)^n \\
-		                                           & = \left(\frac{1-z+pz}{pz}\right)^n            \\
+		G_X^{(n,p^{-1})}(z^{-1})                   & =
+		\left(1-\frac{1}{p} + \frac{1}{pz}\right)^n                   \\
+		                                           & =
+		\left(\frac{1-z+pz}{pz}\right)^n
+		\\
 		\left(G_X^{(n,p^{-1})}(z^{-1})\right)^{-1} & =
-		\left(\frac{pz}{1-z+pz}\right)^n                                                           \\
+		\left(\frac{pz}{1-z+pz}\right)^n
+		\\
 		                                           & = G_Y^{(n,p)}(z)
 	\end{align}
 
@@ -138,29 +142,37 @@
 
 	Using equation \ref{en:pgfnegbin},
 	\begin{align}
-		\left(\frac{pz}{1-z+pz}\right)^n & = (pz)^n\sum_{k=0}^\infty \binom{k+n-1}{n-1}(z-pz)^k \\
-		\left(1-(z-pz)\right)^{-n}       & = \sum_{k=0}^\infty \binom{k+n-1}{n-1}(z-pz)^k
+		\left(\frac{pz}{1-z+pz}\right)^n & = (pz)^n\sum_{k=0}^\infty
+		\binom{k+n-1}{n-1}(z-pz)^k                                   \\
+		\left(1+pz-z\right)^{-n}         & = \sum_{k=0}^\infty
+		\binom{k+n-1}{n-1}(z-pz)^k
 	\end{align}
-	Since $z$, $p$ are arbitrary, let $z-pz = x$.
+	Since $z$, $p$ are arbitrary, let $pz-z = x$.
 	\begin{align}
-		(1-x)^{-n} & = \sum_{r=0}^\infty \binom{r+n-1}{n-1}x^r = \sum_{r=0}^\infty \binom{-n}{r}x^r
+		(1+x)^{-n} & = \sum_{r=0}^\infty (-1)^r\binom{r+n-1}{n-1}x^r =
+		\sum_{r=0}^\infty (-1)^r\binom{n+r-1}{r}x^r
+	\end{align}
+	Now,
+	\begin{align}
+		(-1)^r\binom{n+r-1}{r} & = (-1)^r\frac{(n+r-1)(n+r-2)\cdots n}{r!} \\
+		                       & = \frac{(-n)(-n-1)\cdots (-n-r+1)}{r!}    \\
+		                       & = \binom{-n}{r}
+	\end{align}
+
+	Thus,
+	\begin{align}
+		(1+x)^{-n} = \sum_{r=0}^\infty (-1)^r\binom{n-r+1}{r} x^r=
+		\sum_{r=0}^\infty \binom{-n}{r}x^r
 	\end{align}
 
 	Hence proved.
-
-	% We know $\sum_{k=0}^\infty \binom{k+n-1}{n-1}x^k = (1-x)^{-n}$. Thus
-	% \begin{align}
-	% 	G_Y^{(n,p)}(z) & = (pz)^n(1-z+pz)^{-n}                           \\
-	% 	               & = \left((1-p^{-1} + p^{-1}z^{-1})^n\right)^{-1} \\
-	% 	               & = (G_X^{(n,p^{-1})}(z^{-1}))^{-1}.
-	% \end{align}
-	% Hence Proved.
 
 
 
 	\tcbsubtitle{Task G}
 
-	\textbf{To prove:} \textit{Given PGF of a random variable $X$ is $G(z)$, expectation of $X$ i.e $\E(x) = G'(1)$}
+	\textbf{To prove:} \textit{Given PGF of a random variable $X$ is
+		$G(z)$, expectation of $X$ i.e $\E(x) = G'(1)$}
 
 	\textbf{Proof:} \begin{align}
 		G(z)  & = \E(z^X) = \sum_{k=0}^\infty P[X=k]z^k \\
