@@ -6,7 +6,7 @@ def galton_board(h, N):
     positions = np.sum(steps, axis=1)
     return positions
 
-N = 1000
+N = 100000
 heights = [10, 50, 100]
 
 
