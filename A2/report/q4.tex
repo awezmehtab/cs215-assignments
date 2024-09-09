@@ -165,38 +165,38 @@
 	\begin{align}
 		P[X\geq (1+\delta)\mu] \leq \frac{e^{\delta \mu}}{(1+\delta)^{(1+\delta)\mu}}
 	\end{align}
-    \end{task}
+\end{task}
 
 
 \begin{task}{Task E(B)}
- We need to prove Weak Law of Large Numbers using Chernoff bound, that is, for
- any $\epsilon>0$, the probability that sample average deviates from the true
- mean $\mu$ by more than $\epsilon$ tends to zero as $n\rightarrow \infty$,
- that is
- \begin{equation}
-     \lim_{n\to\infty}P(|\frac{1}{n}\sum_{i=1}^{n}X_{i}-\mu|>\epsilon)=0  
- \end{equation}
- Applying the Chernoff bound, we need to bound $A_{n}$.
- \begin{equation}
-     P(|A_{n}-\mu|> \epsilon )=P(A_{n}>\mu+\epsilon)+P(A_{n}<\mu - \epsilon)
- \end{equation}
- Considering the probability $P(A_{n}>\mu+\epsilon)$. The moment generating function for the i.i.d. random variable $X_{i}$ as $M_{X}(t)=\mathop{\mathbb{E}}[e^{tX_{i}}]$. Using Chernoff's bound on this probability,keeping $\epsilon=\delta\mu$ we get
- \begin{equation}
-     \lim_{n\to\infty}P(A_{n}>\mu+\epsilon)< \inf_{t>0}(e^{n[(e^{t}-1)\mu - (1+\delta)t\mu]})
- \end{equation}
- Putting the value of t from the earlier task we get,
- \begin{equation}      
-    \lim_{n\to\infty}P(A_{n}>\mu+\epsilon)<\lim_{n\to\infty}e^{nu[\delta-(1+\delta)ln(1+\delta)]}
- \end{equation}
- For $t>0$, $\delta $ must be greater than 1 and hence the exponential power becomes negative and thus as n grow larger the term tends to zero.
- \par For the other part, i.e., $P(A_{n}<\mu - \epsilon)$ using the chernoff bound on the left tail and putting $\epsilon=\delta\mu$,
- \begin{equation}
-     \lim_{n\to\infty}P(A_{n}<\mu - \epsilon)< \inf_{t<0}(e^{n[(e^{t}-1)\mu - (1 -\delta)t\mu]})
- \end{equation}
- Since minimising while $t<0$ we will be using $-1<\delta<0$ and putting value of t, we get
- \begin{equation}
-     \lim_{n\to\infty}P(A_{n}<\mu - \epsilon)<(e^{nu(\delta-(1-\delta) ln(1+\delta))})
- \end{equation}
- Again, we can see that the exponential power becomes negative and therefore as n rises, the probability tends to zero.
- \par Therefore we can conclude as n tends to infinity, the probability tends to zero from both sides.
+	We need to prove Weak Law of Large Numbers using Chernoff bound, that is, for
+	any $\epsilon>0$, the probability that sample average deviates from the true
+	mean $\mu$ by more than $\epsilon$ tends to zero as $n\rightarrow \infty$,
+	that is
+	\begin{equation}
+		\lim_{n\to\infty}P(|\frac{1}{n}\sum_{i=1}^{n}X_{i}-\mu|>\epsilon)=0
+	\end{equation}
+	Applying the Chernoff bound, we need to bound $A_{n}$.
+	\begin{equation}
+		P(|A_{n}-\mu|> \epsilon )=P(A_{n}>\mu+\epsilon)+P(A_{n}<\mu - \epsilon)
+	\end{equation}
+	Considering the probability $P(A_{n}>\mu+\epsilon)$. The moment generating function for the i.i.d. random variable $X_{i}$ as $M_{X}(t)=\mathop{\mathbb{E}}[e^{tX_{i}}]$. Using Chernoff's bound on this probability,keeping $\epsilon=\delta\mu$ we get
+	\begin{equation}
+		\lim_{n\to\infty}P(A_{n}>\mu+\epsilon)< \inf_{t>0}(e^{n[(e^{t}-1)\mu - (1+\delta)t\mu]})
+	\end{equation}
+	Putting the value of t from the earlier task we get,
+	\begin{equation}
+		\lim_{n\to\infty}P(A_{n}>\mu+\epsilon)<\lim_{n\to\infty}e^{nu[\delta-(1+\delta)ln(1+\delta)]}
+	\end{equation}
+	For $t>0$, $\delta $ must be greater than 1 and hence the exponential power becomes negative and thus as n grow larger the term tends to zero.
+	\par For the other part, i.e., $P(A_{n}<\mu - \epsilon)$ using the chernoff bound on the left tail and putting $\epsilon=\delta\mu$,
+	\begin{equation}
+		\lim_{n\to\infty}P(A_{n}<\mu - \epsilon)< \inf_{t<0}(e^{n[(e^{t}-1)\mu - (1 -\delta)t\mu]})
+	\end{equation}
+	Since minimising while $t<0$ we will be using $-1<\delta<0$ and putting value of t, we get
+	\begin{equation}
+		\lim_{n\to\infty}P(A_{n}<\mu - \epsilon)<(e^{nu(\delta-(1-\delta) ln(1+\delta))})
+	\end{equation}
+	Again, we can see that the exponential power becomes negative and therefore as n rises, the probability tends to zero.
+	\par Therefore we can conclude as n tends to infinity, the probability tends to zero from both sides.
 \end{task}
