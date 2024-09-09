@@ -38,15 +38,41 @@
 }
 \pagestyle{mystyle}
 
+% Each solution title
+\definecolor{chapterblue}{rgb}{0.1, 0.2, 0.6}
+\titleformat{\chapter}
+{\normalfont\huge\bfseries\color{chapterblue}}
+  {Solution} % Text to replace "Chapter X"
+  {1em} % Space between "Solution" and the actual title (which is empty)
+  {} % Title body formatting
+  [\titlerule]
+
 % Solution box
 \newtcolorbox[
     auto counter,
 ]{solution}{skin=enhanced,drop shadow,breakable,title=Solution~\thetcbcounter}
 
-\newtcolorbox{task}[1]{skin=enhanced,drop shadow,breakable,title={#1}}
+\newtcolorbox{task}[1]{
+    colframe=black!75!white,   % Dark border
+    colback=gray!10,           % Light background
+    coltitle=white,            % Title color
+    fonttitle=\bfseries,       % Bold title font
+    enhanced,                  % Enables enhanced styling options
+    breakable,                 % Allow box to break across pages
+    boxrule=0.8mm,             % Border thickness
+    toptitle=2mm,              % Top padding for title
+    bottomtitle=2mm,           % Bottom padding for title
+    left=4mm,                  % Padding on the left
+    right=4mm,                 % Padding on the right
+    title={#1},                % The title for the task
+    drop shadow={fill=black!20!white}, % Subtle shadow effect
+}
 
 % No indentation for lists
 \setlist[enumerate]{left=0pt}
+
+% Coloring equations
+
 
 % Extra commands
 \newcommand{\Ber}{\text{Ber}}

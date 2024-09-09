@@ -1,8 +1,9 @@
-\chapter{Solution 1}
+\chapter{1}
 
 \begin{task}{ Task A }
 
 	When $X\sim\Ber(p)$, PGF of $X$ is
+
 	\begin{align}
 		G_\Ber(z) & = \E(z^X)                     \\
 		          & = \sum_{n=0}^\infty P[X=n]z^n
@@ -30,11 +31,13 @@
 		          & = (1 - p + pz)^n
 		\label{en:pgfbin}
 	\end{align}
-	By equation \ref{en:pgfber}, $G_\Bin(z) = (1-p + pz)^n = \left(G_\Ber(z)\right)^n$.
-	Hence proved.
+	By equation \ref{en:pgfber},
+	\begin{align}
+		G_{\text{Bin}}(z) = (1-p + pz)^n = (G_\Ber(z))^n
+	\end{align}
+	% Hence proved.
 \end{task}
-
-\begin{task}{ Task C }
+\begin{task}{Task C}
 	By the definition of PGF,
 	\begin{align}
 		G(z) = \sum_{n=0}^\infty P[X_1=n]z^n

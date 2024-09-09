@@ -1,11 +1,16 @@
-\begin{solution}
-	% Fill you solution here
- 	\tcbsubtitle{Task A}
-  	For compputing the first two moments, we have used the \textbf{np.mean()} function. From that, $\hat{\mu}_{1}$ is 6.496145618324817
-   	and  $\hat{\mu}_{2}$ is 46.554361807879815.
-    	
-	\tcbsubtitle{Task D}
-	Given, PDF of Gamma-distribution $\text{Gamma}(k, \theta)$ is $f(x;k,\theta) =
+\chapter{3}
+
+
+\begin{task}{Task A}
+	For compputing the first two moments, we have used the
+	\textbf{np.mean()} function. From that, $\hat{\mu}_{1}$ is
+	6.496145618324817
+	and  $\hat{\mu}_{2}$ is 46.554361807879815.
+\end{task}
+
+\begin{task}{Task D}
+	Given, PDF of Gamma-distribution $\text{Gamma}(k, \theta)$ is
+	$f(x;k,\theta) =
 		\frac{1}{\theta^k\Gamma(k)}x^{k-1}e^{-\frac{x}{\theta}}$. First moment
 	of it is
 	\begin{align}
@@ -45,22 +50,27 @@
 	\end{align}
 	Thus, $\mu_1^\text{Gamma} = k\theta$, $\mu_2^\text{Gamma} = (k+1)k\theta^2$.
 
-	Estimate the best gamma distribution approximation to the given data by equating first and second moments. For $X\sim\text{Gamma}(n,p)$, density function is
+	Estimate the best gamma distribution approximation to the given data by
+	equating first and second moments. For $X\sim\text{Gamma}(n,p)$,
+	density function is
 	\begin{equation}
 		f(x; k, \theta) = \frac{1}{\theta^k\Gamma(k)} x^{k-1} e^{-\frac{x}{\theta}}
 	\end{equation}
 	$\mu_1 = k\theta$ and $\mu_2 = k(k+1)\theta^2$.
+\end{task}
 
-	\tcbsubtitle{Task E}
+\begin{task}{Task E}
 	\begin{itemize}
 		\item Log likelihood for binomimal distribution $\approx -2.157$
 		\item Log likelihood for gamma distribution $= -\texttt{inf}$
 	\end{itemize}
 	Thus binomial distribution is a better fit for the data.
+\end{task}
 
-	\tcbsubtitle{Task F}
+\begin{task}{Task F}
 	\begin{itemize}
 		\item Log likelihood for two-component Gaussian mixture is -2.183
 	\end{itemize}
-	Thus, binomial distribution is slightly better fit than the given two-component gaussian mixture (whose variance is assumed to be 1).
-\end{solution}
+	Thus, binomial distribution is slightly better fit than the given
+	two-component gaussian mixture (whose variance is assumed to be 1).
+\end{task}

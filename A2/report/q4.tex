@@ -1,5 +1,5 @@
-\begin{solution}
-	\tcbsubtitle{Task A}
+\chapter{4}
+\begin{task}{Task A}
 	We can write
 	\begin{equation}
 		\mathop{\mathbb{E}}[X]= P\{X<a\}\cdot \mathop{\mathbb{E}}[X|X<a]+P\{X\geq a\}\cdot  \mathop{\mathbb{E}}[X|X\geq a].
@@ -27,8 +27,10 @@
 		\implies P\{X\geq a\}           & \leq \frac{\mathop{\mathbb{E}}[X]}{a}
 	\end{align}
 	Hence we arrive at our required relation.
+\end{task}
 
-	\tcbsubtitle{Task B}
+
+\begin{task}{Task B}
 	To prove:
 	\begin{equation}
 		P\big[X- \mu \geq \tau \big] \leq \frac{\sigma^2}{\sigma^2+\tau^2}
@@ -46,7 +48,10 @@
 		\implies P[Y\geq \tau] & \leq \frac{\sigma^{2}}{\sigma^2+\tau^2}
 	\end{align}
 	Hence proved.
-	\tcbsubtitle{Task C}
+\end{task}
+
+
+\begin{task}{Task C}
 	To show:
 	\begin{align}
 		P[X\geq x] & \leq e^{-tx}M_{x}(t) \:\:\forall t>0 \\
@@ -77,17 +82,24 @@
 		P(X\leq x)\leq e^{-tx}M_{X}(t)
 	\end{equation}
 	Hence both proofs are finished under given conditions.
-	\tcbsubtitle{Task D}
+\end{task}
+\begin{task}{Task D}
 	We are given $Y = \sum^n_{i=1}X_i$, where each $X_i$ is an independent Bernoulli random variable with $\mathds{E}[X_i] = p_i$
 	\subsection*{1. Expectation of $Y$}
 	The new random variable $Y$ is given by:
-	\[Y = \sum^n_{i=1}X_i\]
+	\begin{align}
+		Y = \sum^n_{i=1}X_i
+	\end{align}
 	Using the liniearity of expectation, the expectation of $Y$ is:
-	\[\mathds{E}[X_i] = \mathds{E}\left[\sum_{i=1}^{n}\right] = \sum_{i=1}^{n}\mathds{E}[X_i] = \sum_{i=1}^{n}p_i\]
+	\begin{align}
+		\mathds{E}[X_i] = \mathds{E}\left[\sum_{i=1}^{n}\right] = \sum_{i=1}^{n}\mathds{E}[X_i] = \sum_{i=1}^{n}p_i
+	\end{align}
 	Let $\mu = \sum_{i=1}^{n}p_i$, So $\mathds{E}[Y]=\mu$
 	\subsection*{2. Proof}
 	From previous subparts, we know
-	\[P[X\geq x]\leq e^{-tx}M_X(t) \text{ for all } t>0\]
+	\begin{align}
+		P[X\geq x]\leq e^{-tx}M_X(t) \text{ for all } t>0
+	\end{align}
 	where $M_X(t)$ is the MGF.
 	\begin{align}
 		M_Y(t) & = \mathds{E}[e^{tY}]                             \\
@@ -100,17 +112,25 @@
 		       & = \prod_{i=1}^{n}M_{X_i}
 	\end{align}
 	MGF of a Bernoulli random variable is
-	\[M_{X_i} = p_ie^t+(1-p_i)\]
+	\begin{align}
+		M_{X_i} = p_ie^t+(1-p_i)
+	\end{align}
 	So,
-	\[
+	\begin{align}
 		M_Y(t) = \prod_{i=1}^{n}(p_ie^t+(1-p_i))
-	\]
+	\end{align}
 	Putting it back into the inequality,
-	\[P[X\geq (1+\delta)\mu]\leq \frac{\prod_{i=1}^{n}(p_ie^t+(1-p_i))}{e^{t(1+\delta)\mu}}\]
+	\begin{align}
+		P[X\geq (1+\delta)\mu]\leq \frac{\prod_{i=1}^{n}(p_ie^t+(1-p_i))}{e^{t(1+\delta)\mu}}
+	\end{align}
 	We know that, $1+x \leq e^x$. Substituting $x$ with $p_i(e^t-1)$, we get:
-	\[1+p_i(e^t-1) \leq e^{p_i(e^t-1)}\]
+	\begin{align}
+		1+p_i(e^t-1) \leq e^{p_i(e^t-1)}
+	\end{align}
 	Rearranging terms,
-	\[p_ie^t + (1-p_i) \leq e^{p_i(e^t-1)} \]
+	\begin{align}
+		p_ie^t + (1-p_i) \leq e^{p_i(e^t-1)}
+	\end{align}
 	So,
 	\begin{align}
 		P[X\geq (1+\delta)\mu] & \leq \frac{\prod_{i=1}^{n}e^{p_i(e^t-1)}}{e^{t(1+\delta)\mu}} \\
@@ -122,20 +142,61 @@
 	This completes the proof
 	\section*{3. Improving bound}
 	To improve bound, we have to minimise the right hand term in \ref{en:q4dineq}. As it is a continuous functions, we can differentiate it to get a minima. Let the RHS be $f(t)$
-	\[\diff{f}{t} = \diff{\frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}}{t}\]
+	\begin{align}
+		\diff{f}{t} = \diff{\frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}}{t}
+	\end{align}
 	For minima, $\diff{f}{t} $ should be 0.
 	\begin{align}
-		\diff{\frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}}{t} & = 0 \\
-		\frac{(e^{(1+\delta)t\mu})\diff{e^{(e^t-1)\mu}}{t}- e^{(e^t-1)\mu}\diff{e^{(1+\delta)t\mu}}{t}}{{(e^{(1+\delta)t\mu})}^2} & = 0 \\
-		(e^{(1+\delta)t\mu})(e^{(e^t-1)\mu})(\mu e^t) - (e^{(e^t-1)\mu})((e^{(1+\delta)t\mu}))(1+\delta)\mu & = 0 \\
-		e^t - (1+\delta) & = 0 \\
-		t & = \ln(1+\delta)
+		\diff{\frac{e^{(e^t-1)\mu}}{e^{(1+\delta)t\mu}}}{t}                                                                       & = 0             \\
+		\frac{(e^{(1+\delta)t\mu})\diff{e^{(e^t-1)\mu}}{t}- e^{(e^t-1)\mu}\diff{e^{(1+\delta)t\mu}}{t}}{{(e^{(1+\delta)t\mu})}^2} & = 0             \\
+		(e^{(1+\delta)t\mu})(e^{(e^t-1)\mu})(\mu e^t) - (e^{(e^t-1)\mu})((e^{(1+\delta)t\mu}))(1+\delta)\mu                       & = 0             \\
+		e^t - (1+\delta)                                                                                                          & = 0             \\
+		t                                                                                                                         & = \ln(1+\delta)
 	\end{align}
 	The improved bound will be,
-	\[f(\ln(1+\delta)) = \frac{e^{(e^{\ln(1+\delta)}-1)\mu}}{e^{(1+\delta){\ln(1+\delta)}\mu}}\]
+	\begin{align}
+		f(\ln(1+\delta)) = \frac{e^{(e^{\ln(1+\delta)}-1)\mu}}{e^{(1+\delta){\ln(1+\delta)}\mu}}
+	\end{align}
 	On further calculation, we get,
-	\[f(\ln(1+\delta)) = \frac{e^{\delta \mu}}{(1+\delta)^{(1+\delta)\mu}}\]
+	\begin{align}
+		f(\ln(1+\delta)) = \frac{e^{\delta \mu}}{(1+\delta)^{(1+\delta)\mu}}
+	\end{align}
 	Finally,
-	\[P[X\geq (1+\delta)\mu] \leq \frac{e^{\delta \mu}}{(1+\delta)^{(1+\delta)\mu}}\]
-		
-\end{solution}
+	\begin{align}
+		P[X\geq (1+\delta)\mu] \leq \frac{e^{\delta \mu}}{(1+\delta)^{(1+\delta)\mu}}
+	\end{align}
+    \end{task}
+
+
+\begin{task}{Task E(B)}
+ We need to prove Weak Law of Large Numbers using Chernoff bound, that is, for
+ any $\epsilon>0$, the probability that sample average deviates from the true
+ mean $\mu$ by more than $\epsilon$ tends to zero as $n\rightarrow \infty$,
+ that is
+ \begin{equation}
+     \lim_{n\to\infty}P(|\frac{1}{n}\sum_{i=1}^{n}X_{i}-\mu|>\epsilon)=0  
+ \end{equation}
+ Applying the Chernoff bound, we need to bound $A_{n}$.
+ \begin{equation}
+     P(|A_{n}-\mu|> \epsilon )=P(A_{n}>\mu+\epsilon)+P(A_{n}<\mu - \epsilon)
+ \end{equation}
+ Considering the probability $P(A_{n}>\mu+\epsilon)$. The moment generating function for the i.i.d. random variable $X_{i}$ as $M_{X}(t)=\mathop{\mathbb{E}}[e^{tX_{i}}]$. Using Chernoff's bound on this probability,keeping $\epsilon=\delta\mu$ we get
+ \begin{equation}
+     \lim_{n\to\infty}P(A_{n}>\mu+\epsilon)< \inf_{t>0}(e^{n[(e^{t}-1)\mu - (1+\delta)t\mu]})
+ \end{equation}
+ Putting the value of t from the earlier task we get,
+ \begin{equation}      
+    \lim_{n\to\infty}P(A_{n}>\mu+\epsilon)<\lim_{n\to\infty}e^{nu[\delta-(1+\delta)ln(1+\delta)]}
+ \end{equation}
+ For $t>0$, $\delta $ must be greater than 1 and hence the exponential power becomes negative and thus as n grow larger the term tends to zero.
+ \par For the other part, i.e., $P(A_{n}<\mu - \epsilon)$ using the chernoff bound on the left tail and putting $\epsilon=\delta\mu$,
+ \begin{equation}
+     \lim_{n\to\infty}P(A_{n}<\mu - \epsilon)< \inf_{t<0}(e^{n[(e^{t}-1)\mu - (1 -\delta)t\mu]})
+ \end{equation}
+ Since minimising while $t<0$ we will be using $-1<\delta<0$ and putting value of t, we get
+ \begin{equation}
+     \lim_{n\to\infty}P(A_{n}<\mu - \epsilon)<(e^{nu(\delta-(1-\delta) ln(1+\delta))})
+ \end{equation}
+ Again, we can see that the exponential power becomes negative and therefore as n rises, the probability tends to zero.
+ \par Therefore we can conclude as n tends to infinity, the probability tends to zero from both sides.
+\end{task}
