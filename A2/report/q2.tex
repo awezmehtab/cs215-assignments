@@ -152,30 +152,31 @@ Inside the function, the variable steps is a matrix with \texttt{N} rows and \te
 	\end{align}
 
 	\subsection*{-$P_h[X=i]$ approximates to normal distribution }
-	Now, we need to show $P_h[X=2i]$ approximates to normal distribution for very large $h$.\\
+	Now, we need to show $P_h[X=i]$ approximates to normal distribution for very large $h$.\\
 	 Using \textbf{Stirling's approximation} for large $n$, which states that:
 	 \begin{align}
 	 	n!\approx \sqrt[]{2\pi n}\left(\frac{n}{2}\right)^n
 	 \end{align}
 	$P_h$ in terms of $k$ can be written as
-	\[P_h[X=i] = \binom{2k}{k+i}\left(\frac{1}{2}\right)^{2k}\]
-	Where $h=2k$ and $i\in\{-k,-k+1,\ldots,k-1,k\}$, (unlike the 1st subpart where $i\in\{-h,-h+2,\ldots,h-2,h\}$)
+	\[P_h[X=i] = \binom{2k}{k+\frac{i}{2}}\left(\frac{1}{2}\right)^{2k}\]
+	Where $h=2k$. Let $j=\frac{i}{2}$. So, $j\in\{-k,-k+1,\ldots,k-1,k\}$. So now,
+	\[P_h[X=2j] =  \binom{2k}{k+j}\left(\frac{1}{2}\right)^{2k}\]  \\
 	Using Stirling's approximations,
 	\begin{align}
-		P_h[X=i] & = \frac{(2k)!}{(k+i)!(k-i)!}\left(\frac{1}{2}\right)^{2k} \\
-		& \approx \frac{\sqrt[]{2\pi(2k)}\left(\frac{2k}{e}\right)^{2k}}{\sqrt[]{2\pi(k+i)}\left(\frac{k+i}{e}\right)^{k+i}\sqrt[]{2\pi(k-i)}\left(\frac{k-i}{e}\right)^{k-i}}\left(\frac{1}{2}\right)^{2k} \\
-		& = \frac{\sqrt[]{4\pi k}}{\sqrt[]{2\pi (k+i)}\sqrt[]{2\pi (k-i)}} \left(\frac{2k}{e}\right)^{2k}\left(\frac{e}{k+i}\right)^{k+i}\left(\frac{e}{k-i}\right)^{k-i}\left(\frac{1}{2}\right)^{2k} \\
-		& = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k+i)(k-i)}}\left(\frac{2^{2k}\cdot e^{k+i+k-i}}{e^{2k}\cdot2^{2k}}\right) \left(\frac{k^{2k}}{(k+i)^{k+i}\cdot (k-i)^{k-i}}\right) \\
-		& = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-i^2)}}\left(\frac{(k-i)^i}{(k+i)^i}\right)\left(\frac{k^2}{(k+i)(k-i)}\right)^k \\
-		& = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-i^2)}}\left(\frac{k^i\left(1-\frac{i}{k}\right)^i}{k^i\left(1+\frac{i}{k}\right)^i}\right)\left(\frac{k^2}{k^2-i^2}\right)^k
+		P_h[X=i] & = \frac{(2k)!}{(k+j)!(k-j)!}\left(\frac{1}{2}\right)^{2k} \\
+		& \approx \frac{\sqrt[]{2\pi(2k)}\left(\frac{2k}{e}\right)^{2k}}{\sqrt[]{2\pi(k+j)}\left(\frac{k+j}{e}\right)^{k+j}\sqrt[]{2\pi(k-j)}\left(\frac{k-j}{e}\right)^{k-j}}\left(\frac{1}{2}\right)^{2k} \\
+		& = \frac{\sqrt[]{4\pi k}}{\sqrt[]{2\pi (k+j)}\sqrt[]{2\pi (k-j)}} \left(\frac{2k}{e}\right)^{2k}\left(\frac{e}{k+j}\right)^{k+j}\left(\frac{e}{k-j}\right)^{k-j}\left(\frac{1}{2}\right)^{2k} \\
+		& = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k+j)(k-j)}}\left(\frac{2^{2k}\cdot e^{k+j+k-j}}{e^{2k}\cdot2^{2k}}\right) \left(\frac{k^{2k}}{(k+j)^{k+j}\cdot (k-j)^{k-j}}\right) \\
+		& = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-j^2)}}\left(\frac{(k-j)^j}{(k+j)^j}\right)\left(\frac{k^2}{(k+j)(k-j)}\right)^k \\
+		& = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-j^2)}}\left(\frac{k^j\left(1-\frac{j}{k}\right)^j}{k^j\left(1+\frac{j}{k}\right)^j}\right)\left(\frac{k^2}{k^2-j^2}\right)^k
 	\end{align}
-	As, $i\ll \sqrt[]{h}$ and $h=2k$, so $i\ll \sqrt[]{k}$ and $i\ll k$. \\
-	I will use the following approximation in my proof next:
+	As $i \ll \sqrt[]{h}$, so $j\ll \sqrt[]{h}$ and as $h=2k$, so $j\ll \sqrt[]{k}$ and $j\ll k$. \\
+	I will use the following well known approximation in my proof next:
 	\[(1+x)^n \approx 1+nx\]
 	where $x$ is close to 0.
 	\begin{align}
-		P_h[X=i] & = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-i^2)}}\left(1-\frac{i^2}{k}\right)\left(1-\frac{i^2}{k}\right)\left(\frac{k^2-i^2+i^2}{k^2-i^2}\right)^k\\
-		& = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-i^2)}}\left(1-\frac{2i^2}{k}\right)\left(1+\frac{i^2}{k^2-i^2}\right)^k\\
+		P_h[X=i] & = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-j^2)}}\left(1-\frac{j^2}{k}\right)\left(1-\frac{j^2}{k}\right)\left(\frac{k^2-j^2+j^2}{k^2-j^2}\right)^k\\
+		& = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-j^2)}}\left(1-\frac{2j^2}{k}\right)\left(1+\frac{j^2}{k^2-j^2}\right)^k\\
 	\end{align}
 	We are going to use few more well known approximation. We know that:
 	\[\lim_{x\to \infty y\to 0} (1+y)^x = e^{xy}\]
@@ -183,13 +184,17 @@ Inside the function, the variable steps is a matrix with \texttt{N} rows and \te
 	The second approximation comes from taylor series.
 	Continuing the proof:
 	\begin{align}
-		P_h[X=i] & = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-i^2)}} e^{\frac{-2i^2}{k}}e^{k\cdot{\frac{i^2}{k^2-i^2}}}\\
+		P_h[X=i] & = \frac{\sqrt[]{k}}{\sqrt[]{\pi (k^2-j^2)}} e^{\frac{-2j^2}{k}}e^{k\cdot{\frac{j^2}{k^2-j^2}}}\\
 	\end{align}
-	Since $i\ll k$, $i^2 \ll k^2$, we can write $k^2-i^2=k^2$
+	Since $j\ll k$, $j^2 \ll k^2$, we can write $k^2-j^2=k^2$
 	\begin{align}
-		P_h[X=i] & = \frac{\sqrt[]{k}}{\sqrt[]{\pi k^2}}e^{\frac{-2i^2}{k}}e^{k\cdot{\frac{i^2}{k^2}}} \\
-		& = \frac{1}{\sqrt[]{\pi k}}e^{\frac{-2i^2}{k}+\frac{i^2}{k}}\\
-		& = \frac{1}{\sqrt[]{\pi k}}e^{\frac{-i^2}{k}}
+		P_h[X=i] & = \frac{\sqrt[]{k}}{\sqrt[]{\pi k^2}}e^{\frac{-2j^2}{k}}e^{k\cdot{\frac{j^2}{k^2}}} \\
+		& = \frac{1}{\sqrt[]{\pi k}}e^{\frac{-2j^2}{k}+\frac{j^2}{k}}\\
+		& = \frac{1}{\sqrt[]{\pi k}}e^{\frac{-j^2}{k}}
+	\end{align}
+	Substituting back the value of $j = \frac{i}{2}$
+	\begin{align}
+		P_h[X=i] & = \frac{1}{\sqrt[]{\pi k}}e^{\frac{-i^2}{4k}}
 	\end{align}
 	%  We can convert the factorials in the binomial coefficient:
 	%  \begin{align}
@@ -200,7 +205,7 @@ Inside the function, the variable steps is a matrix with \texttt{N} rows and \te
 	% 	\binom{h}{y} \approx \frac{\sqrt[]{2\pi h}\left(\frac{h}{e}\right)^h}{\sqrt[]{2\pi y}\left(\frac{y}{e}\right)^y\cdot \sqrt[]{2\pi(h-y)}\left(\frac{h-y}{e}\right)^{h-y}}
 	% \end{align}
 	%  where $y = \frac{h+2i}{2}$
-	% For large $h$, we can simplify this assuming small $i$ (relative to $h$). In particular, $\frac{h+2i}{2}$ can be written as $\frac{h}{2}$, leading to:
+	% For large $h$, we can simplify this assuming small $j$ (relative to $h$). In particular, $\frac{h+2i}{2}$ can be written as $\frac{h}{2}$, leading to:
 	% \begin{align}
 	% 	\binom{h}{\frac{h+2i}{2}} \approx \frac{2^h}{\sqrt[]{\pi h}}e^{-\frac{2i^2}{h}}
 	% \end{align}
