@@ -43,6 +43,11 @@
     auto counter,
 ]{solution}{skin=enhanced,drop shadow,breakable,title=Solution~\thetcbcounter}
 
+\newtcolorbox{task}[1]{skin=enhanced,drop shadow,breakable,title={#1}}
+
+% No indentation for lists
+\setlist[enumerate]{left=0pt}
+
 % Extra commands
 \newcommand{\Ber}{\text{Ber}}
 \newcommand{\Var}{\text{Var}}
@@ -53,6 +58,7 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\MGF}{\text{MGF}}
+\newcommand{\PDF}{\text{PDF}}
 
 \begin{document}
 

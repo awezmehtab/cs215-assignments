@@ -1,8 +1,7 @@
-\begin{solution}
+\chapter{Solution 1}
 
+\begin{task}{ Task A }
 
-
-	\tcbsubtitle{Task A}
 	When $X\sim\Ber(p)$, PGF of $X$ is
 	\begin{align}
 		G_\Ber(z) & = \E(z^X)                     \\
@@ -15,10 +14,10 @@
 		\label{en:pgfber}
 	\end{align}
 
+\end{task}
 
 
-	\tcbsubtitle{Task B}
-
+\begin{task}{ Task B }
 	When $X\sim\Bin(n,p)$, PMF of $X$ is
 	\begin{equation}
 		P[X=k] = \binom{n}{k}p^k(1-p)^{n-k} \text{  for  } k\leq n.
@@ -28,16 +27,14 @@
 		G_\Bin(z) & = \sum_{k=0}^\infty P[X=k]z^k                \\
 		          & = \sum_{k=0}^n \binom{n}{k}p^k(1-p)^{n-k}z^k \\
 		          & = \sum_{k=0}^n \binom{n}{k}(pz)^k(1-p)^{n-k} \\
-		          & = (1-p + pz)^n.
+		          & = (1 - p + pz)^n
 		\label{en:pgfbin}
 	\end{align}
-	% By equation \ref{en:pgfber}, $G_\Bin(z) = (1-p + pz)^n = \left(G_\Ber(z)\right)^n$.
+	By equation \ref{en:pgfber}, $G_\Bin(z) = (1-p + pz)^n = \left(G_\Ber(z)\right)^n$.
 	Hence proved.
+\end{task}
 
-
-
-	\tcbsubtitle{Task C}
-
+\begin{task}{ Task C }
 	By the definition of PGF,
 	\begin{align}
 		G(z) = \sum_{n=0}^\infty P[X_1=n]z^n
@@ -65,10 +62,9 @@
 	\end{align}
 
 	Hence Proved.
+\end{task}
 
-
-
-	\tcbsubtitle{Task D}
+\begin{task}{ Task D }
 	When $X\sim\Geo(p)$, PMF of $X$,
 	\begin{equation}
 		P[X=k] = (1-p)^{k-1}p
@@ -83,11 +79,11 @@
 		          & = \frac{pz}{1-z+pz}
 		\label{en:pgfgeo}
 	\end{align}
+\end{task}
 
 
 
-	\tcbsubtitle{Task E}
-
+\begin{task}{ Task E }
 	By equation \ref{en:pgfbin},
 	\begin{align}
 		G_\Bin(z) = (1-p + pz)^n = G_X^{(n,p)}(z).
@@ -122,11 +118,11 @@
 	\end{align}
 
 	Hence Proved.
+\end{task}
 
 
 
-	\tcbsubtitle{Task F}
-
+\begin{task}{ Task F }
 	For $Y\sim\NegBin(n,p)$,
 	\begin{align}
 		P[Y=k] = \binom{k-1}{n-1}p^n(1-p)^{k-n}
@@ -166,10 +162,12 @@
 	\end{align}
 
 	Hence proved.
+\end{task}
 
 
 
-	\tcbsubtitle{Task G}
+
+\begin{task}{ Task G }
 
 	\textbf{To prove:} \textit{Given PGF of a random variable $X$ is
 		$G(z)$, expectation of $X$ i.e $\E(x) = G'(1)$}
@@ -216,4 +214,4 @@
 		      Thus, $\E[X] = \frac{n}{p}$.
 	\end{enumerate}
 
-\end{solution}
+\end{task}

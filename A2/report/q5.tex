@@ -1,7 +1,5 @@
-\begin{solution}
-
-	\tcbsubtitle{Task A}
-
+\chapter{Solution 5}
+\begin{task}{Task A}
 	Given, PDF of GMM variable $X$ is $f_X = \sum_{i=1}^K p_iP[X_i=x]$. Let
 	it's CDF be $F_X$. Then $F_X(x)$ is given by
 
@@ -36,10 +34,11 @@
 	Since $x$ was arbitrary, for every $u\in\mathbb{R}$, $f_\A(u) =
 		f_X(u)$. i.e the algorithm indeed samples from the GMM variable's
 	distribution.
+\end{task}
 
 
-	\tcbsubtitle{Task B}
 
+\begin{task}{Task B}
 	Since
 	\begin{align}
 		\E[X] & = \int_{-\infty}^{\infty} t\cdot P[X=t]dt                    \\
@@ -67,13 +66,131 @@
 		          & = \sum_{i=1}^K p_i e^{t\mu_i + \frac{1}{2}t^2\sigma_i^2}
 	\end{align}
 
-	\tcbsubtitle{Task C}
-	Given $Z=\sum_{i=1}^Kp_iX_i$, where $X_i\sim\N(\mu_i,\sigma_i^2)$
+\end{task}
 
-	\begin{align}
-		\E[Z] & = \E\left[\sum_{i=1}^Kp_iX_i\right] \\
-		      & = \sum_{i=1}^Kp_i\E[X_i]            \\
-		      & = \sum_{i=1}^Kp_i\mu_i
-	\end{align}
 
-\end{solution}
+\begin{task}{Task C}
+	\begin{enumerate}
+		\item Given $Z=\sum_{i=1}^Kp_iX_i$, where $X_i\sim\N(\mu_i,\sigma_i^2)$
+
+		      \begin{align}
+			      \E[Z] & = \E\left[\sum_{i=1}^Kp_iX_i\right] \\
+			            & = \sum_{i=1}^Kp_i\E[X_i]            \\
+			            & = \sum_{i=1}^Kp_i\mu_i
+		      \end{align}
+
+		\item       For $\Var[Z]$,
+		      \begin{align}
+			      \Var[Z] & = \E[Z^2] - \E[Z]^2                                                                                                                                \\
+			              & = \E\left[ \left(\sum_{i=1}^k p_i X_i\right)^2\right] - \left(\sum_{i=1}^k p_i\mu_i\right)^2                                                       \\
+			              & = \E\left[\sum_{i=1}^N p_i^2X_i^2\right] + \E\left[2\sum_{i\neq j}p_ip_jX_iX_j\right] - \sum_{i=1}^Kp_i^2\mu_i^2 - 2\sum_{i\neq j}p_ip_j\mu_i\mu_j \\
+			              & = \sum_{i=1}^K p_i^2\E[X_i^2] + 2\sum_{i\neq j} p_ip_j \E[X_iX_j] - \sum_{i=1}^Kp_i^2\mu_i^2 - 2\sum_{i\neq j}p_ip_j\mu_i\mu_j                     \\
+			      \intertext{Since each $X_i$, $X_j$ ($i\neq j$) are independent}
+			              & = \sum_{i=1}^K p_i^2(\sigma_i^2 + \mu_i^2) + 2\sum_{i\neq j} p_ip_j \mu_i\mu_j - \sum_{i=1}^Kp_i^2\mu_i^2 - 2\sum_{i\neq j}p_ip_j\mu_i\mu_j        \\
+			              & = \sum_{i=1}^K p_i^2\sigma_i^2
+		      \end{align}
+		      Thus, $\Var[Z] = \sum_{i=1}^K p_i^2\sigma_i^2$.
+
+
+		\item Let $\Phi(\mu, \sigma^2) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(u-\mu)^2}{2\sigma^2}\right) $.
+
+		      For PDF $f_Z(u)$ of $Z$, Let $\hat{\mu} = \sum_{i=1}^K p_i\mu_i$ and
+		      $\hat{\sigma}^2 = \sum_{i=1}^K p_i^2\sigma^2$. Then,
+		      \begin{align}
+			      f_Z(u) & = \Phi(\hat{\mu}, \hat{\sigma}^2)
+		      \end{align}
+		      This seems intuitive from the above results. Let's try to prove it using induction on $i$. For $i=1$, $Z = p_1X_1$, $\hat{\mu} = p_1\mu_1$, $\hat{\sigma}^2 = p_1^2\sigma_1^2$
+		      \begin{align}
+			      f_Z(u) & = \Phi (p_1\mu_1, p_1\mu_1^2)      \\
+			             & = \Phi (\hat{\mu}, \hat{\sigma}^2)
+		      \end{align}
+
+		      Now, let $\forall j \text{ s.t }j<K$ if $Z=\sum_{i=1}^j p_iX_i$ then $f_Z(u) = \Phi(\hat{\mu}, \hat{\sigma}^2) = \Phi(\sum p_i\mu_i, \sum p_i^2\sigma_i^2)$.
+
+		      For $Z = \sum_{i=1}^K p_iX_i$, let $Z' = \sum_{i=1}^{K-1} p_iX_i$, $\hat{\mu}' = \sum_{i=1}^{K-1}p_i\mu_i$ and $\hat{\sigma}'^2 = \sum_{i=1}^{K-1}p_i^2\sigma_i^2$
+		      \begin{align}
+			      f_Z(u) & = \frac{\partial}{\partial u}P[Z\leq u]                                                                                                        \\
+			             & = \frac{\partial}{\partial u}\int_{-\infty}^{\infty} P[x \leq Z' \leq x+dx \text{ and } p_KX_k \leq u-x] dx                                    \\
+			             & = \frac{\partial}{\partial u}\int_{-\infty}^\infty f_{Z'}(x)P[p_KX_K\leq u-x]dx                                                                \\
+			             & = \int_{-\infty}^\infty f_{Z'}(x)f_{X_K}(u-x)dx                                                                                                \\
+			             & = \frac{1}{2\pi\sigma'\sigma_K}\int_{-\infty}^\infty \exp\left(-\frac{(x-\hat{\mu}')^2}{2\sigma'^2} - \frac{(x-\mu_K)^2}{2\sigma_K^2}\right)dx
+		      \end{align}
+		      This can be simplified as it's an exponential of a quadratic equation,
+		      gaussial integral has to be used. This simplifies to the gaussian
+		      $\Phi(\hat{\mu}, \hat{\sigma}^2)$. Thus $\forall i\in \mathbb{N}$,
+		      $f_Z(u) = \Phi(\sum_{i=1}^Kp_i\mu_i, \sum_{i=1}^Kp_i^2\sigma_i^2)$
+
+		      We've proved that
+		      \begin{align}
+			      Z & \sim \N\left(\sum_{i=1}^Kp_i\mu_i, \sum_{i=1}^Kp_i^2\sigma_i^2\right) \\
+			        & \sim \N(\hat{\mu}, \hat{\sigma}^2)
+		      \end{align}
+
+		\item Now, MGF of $Z$, $M_Z(t)$ is
+		      \begin{align}
+			      M_Z(t) & = \exp\left(\hat{\mu}t + \frac{\hat{\sigma}^2t^2}{2}\right)                             \\
+			             & = \exp\left(\sum_{i=1}^K p_i\mu_i t + \frac{\sum_{i=1}^K p_i^2\sigma_i^2 t^2}{2}\right)
+		      \end{align}
+
+		\item $X$ and $Z$ are different. $X$ is a mixture of gaussian distributions
+		      whereas $Z$ itself is a gaussian distribution. Their PDFs would be
+		      different, $X$ would have $i$ peaks whereas $Z$ would have only one
+		      peak. $X$ is like a weighted sum of gaussian distributions. Z is a
+		      gaussian distribution whose mean and variance are weighted sum of means
+		      and variances of other gaussian distributions.
+
+		\item $Z$ follows a gaussian distribution with mean $\sum_{i=1}^K p_i\mu_i$ and variance $\sum_{i=1}^Kp_i^2\sigma_i^2$.
+	\end{enumerate}
+\end{task}
+
+\begin{task}{Task D(B)}
+	Suppose we have two arbitrary random variables $X_1$ and $X_2$. Let's
+	try to prove the theorem in one direction first. Suppose that we know
+	PDF/PMF of $X_1$ and $X_2$ i.e $f_{X_1}(x)$ and $f_{X_2}(x)$ are equal.
+	Let MGF of $X_1$ and $X_2$ be $M_{X_1}(t)$ and $M_{X_2}(t)$
+	respectively. Let their common sample space be $S$ (PDFs are equal).
+	We have two cases:
+	\begin{enumerate}
+		\item \textbf{$X_1$ and $X_2$ are finite or discrete}:
+		      \begin{align}
+			      f_{X_1}(x)            & = f_{X_2}(x) \text{ for all } x \in S            \\
+			      \sum e^{tx}f_{X_1}(x) & = \sum e^{tx}f_{X_2}(x) \text{ for all } t \in S \\
+			      M_{X_1}(t)            & = M_{X_2}(t) \text{ for all } t \in S
+		      \end{align}
+		\item \textbf{$X_1$ and $X_2$ are continuous}:
+		      \begin{align}
+			      f_{X_1}(x)                & = f_{X_2}(x) \text{ for all } x              \\
+			      \int_{S} e^{tx}f_{X_1}(x) & = \int_S e^{tx}f_{X_2}(x) \text{ for all } t \\
+			      M_{X_1}(t)                & = M_{X_2}(t) \text{ for all } t
+		      \end{align}
+	\end{enumerate}
+
+	Let's try to prove the other direction, i.e suppose MGFs of $X_1$ and
+	$X_2$ are equal, i.e $M_{X_1}(t) = M_{X_2}(t)$. We again have cases
+	\begin{enumerate}
+		\item \textbf{$X_1$ and $X_2$ are finite or discrete}:
+		      \begin{align}
+			      M_{X_1}(t)                                     & = M_{X_2}(t) \text{ for all } t \in S               \\
+			      \sum_{x\in S} e^{tx}f_{X_1}(x)                 & = \sum_{x\in S} e^{tx}f_{X_2}(x) \text{ for all } t \\
+			      \sum_{x\in S} e^{tx} (f_{X_1}(x) - f_{X_2}(x)) & = 0                                                 \\
+			      \sum_{x\in S} a_x(e^{t})^x                     & = 0
+		      \end{align}
+		      where $a_x=f_{X_1}(x)-f_{X_2}(x)$. This has infinitely many roots, which is only possible if all the coefficients $a_x$ are 0, Thus
+		      \begin{align}
+			      a_k        & = 0 \text{ for all } k          \\
+			      f_{X_1}(x) & = f_{X_2}(x) \text{ for all } x
+		      \end{align}
+		      Hence, PMFs of $X_1$ and $X_2$ are equal.
+
+		\item \textbf{$X_1$ and $X_2$ are continuous}:
+		      \begin{align}
+			      M_{X_1}(t)                                       & = M_{X_2}(t) \text{ for all } t \in \mathbb{R} \in S                                   \\
+			      \int_{x\in S} e^{tx}f_{X_1}(x)dx                 & = \int_{x\in S} e^{tx}f_{X_2}(x)dx \text{ for all } t \in \mathbb{R}                   \\
+			      \int_{x\in S} e^{tx} (f_{X_1}(x) - f_{X_2}(x))dx & = 0                                                  \text{ for all } t \in \mathbb{R} \\
+			      \int_{x\in S} a(x)(e^{t})^x                   dx & = 0\text{ for all } t\in \mathbb{R}
+		      \end{align}
+		      where $a(x)=f_{X_1}(x)-f_{X_2}(x)$. This integral is 0 for all $t\in \mathbb{R}$ if and only if $a(x) = 0$ for all $x\in S$. Thus, $f_{X_1}(x) = f_{X_2}(x)$ for all $x\in S$.
+		      Hence, PDFs of $X_1$ and $X_2$ are equal.
+	\end{enumerate}
+	Hence, we've shown that PDFs/PMFs of distributions (continuous/discrete respectively) are equal iff their MGFs are equal.
+\end{task}
