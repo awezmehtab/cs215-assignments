@@ -8,3 +8,7 @@ motivation/
 *Zone*
 */class/
 *.fdb_latexmk
+
+
+# datasets
+Forensic_glass_data.csv
