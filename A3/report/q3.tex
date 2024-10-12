@@ -1,0 +1,29 @@
+\section{Higher-Order Regression}
+
+\subsection{Part 1}
+Suppose our estimates for $\alpha$ and $\beta$ are $A$ and $B$ respectively,
+then these values of $A$ and $B$ minimize
+\begin{align}
+	\sum_{i=1}^{n} (y_i - A - Bx_i)^2                                                    \\
+	\implies \frac{\partial}{\partial A}\sum_{i=1}^{n} (y_i - A - Bx_i)^2 & = 0          \\
+	\sum_{i=1}^{n} -2(y_i - A - Bx_i)                                     & = 0          \\
+	n\bar{y} - nA - nB\bar{x}                                             & = 0          \\
+	\bar{y} = A + B\bar{x}                                                & \label{eq:1}
+\end{align}
+Least square regression line is given by $y = A + Bx$. Thus by \eqref{eq:1},
+$(\bar{x}, \bar{y})$ lies on the regression line.
+
+\subsection{Part 2}
+Suppose our estimates for $\beta_0^*$ and $\beta_1^*$ are $A^*$ and $B^*$ respectively,
+then $A^*$ and $B^*$ minimize $\sum_{i=1}^{n} (y_i - A^* - B^*z_i)^2$
+\begin{align}
+	\implies \frac{\partial}{\partial A^*}\sum_{i=1}^{n} (y_i - A^* - B^*z_i)^2 & = 0 & \frac{\partial}{\partial B^*}\sum_{i=1}^{n} (y_i - A^* - B^*z_i)^2 & = 0 \\
+	\sum_{i=1}^{n} -2(y_i - A^* - B^*z_i)                                       & = 0 & \sum_{i=1}^{n} -2z_i(y_i - A^* - B^*z_i)                           & = 0 \\
+	n\bar{y} - nA^* - nB^*\bar{z}                                               & = 0 & \sum z_iy_i - A^*n\bar{z} - B^*\sum z_i^2                          & = 0
+\end{align}
+\begin{align}
+	\sum y_iz_i - n(\bar{y} - B^*\bar{z})\bar{z} - B^*\sum z_i^2  = 0
+\end{align}
+\begin{align}
+	B^* & = \frac{\sum y_iz_i - n\bar{y}\bar{z}}{n\bar{z}^2-\sum z_i^2} & A^* & = \bar{y} - B^*\bar{z}
+\end{align}
