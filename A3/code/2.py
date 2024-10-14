@@ -46,8 +46,8 @@ ep_kernel.fit(data)
 
 # TODO: Plot the estimated density in a 3D plot
 
-x = np.linspace(-6, 6, 60)
-y = np.linspace(-6, 6, 60)
+x = np.linspace(-6, 6, 70)
+y = np.linspace(-6, 6, 70)
 xg, yg = np.meshgrid(x, y)
 
 input = np.column_stack([xg.ravel(), yg.ravel()])
