@@ -14,7 +14,7 @@ the bin width, and \( m \) is the total number of bins.
 
 The histogram estimator \( \hat{f}(x) \) is given by:
 \begin{align}
-	\hat{f}(x) = \sum_{j=1}^{m} \frac{\hat{p}_j}{h} I_{[x \in B_j]}
+	\hat{f}(x) = \sum_{j=1}^{m} \frac{\hat{p}_j}{h} \mathbb{1}_{[x \in B_j]}
 \end{align}
 where $\hat{p}_j = \frac{v_j}{n}$ is the estimated probability that a point
 falls in the $j$-th bin, and $I_{[x \in B_j]}$ is the indicator
@@ -22,16 +22,16 @@ function, which is 1 if $x \in B_j$, and 0 otherwise.
 
 Now, square \( \hat{f}(x) \):
 \begin{align}
-	\hat{f}(x)^2 = \left( \sum_{j=1}^{m} \frac{\hat{p}_j}{h} I_{[x \in B_j]} \right)^2
+	\hat{f}(x)^2 = \left( \sum_{j=1}^{m} \frac{\hat{p}_j}{h} \mathbb{1}_{[x \in B_j]} \right)^2
 \end{align}
 Since the bins \( B_j \) are non-overlapping, the cross terms vanish, and we
 are left with:
 \begin{align}
-	\hat{f}(x)^2 = \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 I_{[x \in B_j]}
+	\hat{f}(x)^2 = \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 \mathbb{1}_{[x \in B_j]}
 \end{align}
 Integrating \( \hat{f}(x)^2 \) over the entire domain:
 \begin{align}
-	\int \hat{f}(x)^2 \, dx = \int \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 I_{[x \in B_j]} \, dx
+	\int \hat{f}(x)^2 \, dx = \int \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 \mathbb{1}_{[x \in B_j]} \, dx
 \end{align}
 Because the bins \( B_j \) are disjoint, the integral breaks down into a sum of
 integrals over each bin:
