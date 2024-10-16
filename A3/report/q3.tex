@@ -85,3 +85,29 @@ we have
 \end{align}
 
 We'll use this in our code.
+
+\begin{enumerate}
+	\item By the SSR graph above, $m=18$ seems to be the optimal degree of
+	      the polynomial. Thus, polynomial regressor of degree 18 would be the
+	      best fit regressor for this data.
+	\item $SS_R$s values are too close so values close aren't too much of an
+	      underfit/overfit (they're almost similar) We see that $SS_R$ at $2$
+	      and $21$ have comparatively high $SS_R$s, so degree $2$ can be
+	      considered as an underfit and degree $21$ as an overfit. Here's the
+	      fit for underfit, optimal fit and overfit respectively
+	      \begin{figure}
+		      \centering
+		      \includegraphics[width=0.5\textwidth]{../images/3/3_underfit.png}
+		      \caption{Underfit model}
+	      \end{figure}
+	      \begin{figure}
+		      \centering
+		      \includegraphics[width=0.5\textwidth]{../images/3/3_correctfit.png}
+		      \caption{Optimal model}
+	      \end{figure}
+	      \begin{figure}
+		      \centering
+		      \includegraphics[width=0.5\textwidth]{../images/3/3_overfit.png}
+		      \caption{Overfit model}
+	      \end{figure}
+\end{enumerate}
