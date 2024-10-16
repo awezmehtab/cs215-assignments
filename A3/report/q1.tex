@@ -1,57 +1,98 @@
 \section{Finding optimal bandwidth}
-\subsection{Part 1a}
-We are tasked with proving the following equation for the histogram estimator:
+
+a)We are tasked with proving the following equation for the histogram estimator:
 
 \begin{align}
-	\int \hat{f}(x)^2 \, dx = \frac{1}{n^2 h} \sum_{j=1}^{m} v_j^2
+\int \hat{f}(x)^2 \, dx = \frac{1}{n^2 h} \sum_{j=1}^{m} v_j^2
 \end{align}
 
-where $\hat{f}(x)$ is the histogram estimator, $v_j$  is the number of
-points in the \( j \)-th bin, \( n \) is the total number of points, \( h \) is
-the bin width, and \( m \) is the total number of bins.
+where \( \hat{f}(x) \) is the histogram estimator, \( v_j \) is the number of points in the \( j \)-th bin, \( n \) is the total number of points, \( h \) is the bin width, and \( m \) is the total number of bins.
+\\
 
 The histogram estimator \( \hat{f}(x) \) is given by:
-\begin{align}
-	\hat{f}(x) = \sum_{j=1}^{m} \frac{\hat{p}_j}{h} I_{[x \in B_j]}
-\end{align}
-where \( \hat{p}_j = \frac{v_j}{n} \) is the estimated probability that a point
-falls in the \( j \)-th bin, and \( I_{[x \in B_j]} \) is the indicator
-function, which is 1 if \( x \in B_j \), and 0 otherwise.
 
+\begin{align}
+\hat{f}(x) = \sum_{j=1}^{m} \frac{\hat{p}_j}{h} I_{[x \in B_j]}
+\end{align}
+
+where \( \hat{p}_j = \frac{v_j}{n} \) is the estimated probability that a point falls in the \( j \)-th bin, and \( I_{[x \in B_j]} \) is the indicator function, which is 1 if \( x \in B_j \), and 0 otherwise.
+\\
 Now, square \( \hat{f}(x) \):
+
 \begin{align}
-	\hat{f}(x)^2 = \left( \sum_{j=1}^{m} \frac{\hat{p}_j}{h} I_{[x \in B_j]} \right)^2
+\hat{f}(x)^2 = \left( \sum_{j=1}^{m} \frac{\hat{p}_j}{h} I_{[x \in B_j]} \right)^2
 \end{align}
+
 Since the bins \( B_j \) are non-overlapping, the cross terms vanish, and we are left with:
+
 \begin{align}
-	\hat{f}(x)^2 = \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 I_{[x \in B_j]}
+\hat{f}(x)^2 = \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 I_{[x \in B_j]}
 \end{align}
+
+
 Integrating \( \hat{f}(x)^2 \) over the entire domain:
+
 \begin{align}
-	\int \hat{f}(x)^2 \, dx = \int \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 I_{[x \in B_j]} \, dx
+\int \hat{f}(x)^2 \, dx = \int \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 I_{[x \in B_j]} \, dx
 \end{align}
+
 Because the bins \( B_j \) are disjoint, the integral breaks down into a sum of integrals over each bin:
+
 \begin{align}
-	\int \hat{f}(x)^2 \, dx = \sum_{j=1}^{m} \int_{B_j} \left( \frac{\hat{p}_j}{h} \right)^2 \, dx
+\int \hat{f}(x)^2 \, dx = \sum_{j=1}^{m} \int_{B_j} \left( \frac{\hat{p}_j}{h} \right)^2 \, dx
 \end{align}
+
 The length of each bin is  $h$ and $ \hat{p}_{j}/h $ is independent of x, so the integral over each bin $B_j$  is:
+
 \begin{align}
-	\int_{B_j} 1 \, dx = h
+\int_{B_j} 1 \, dx = h
 \end{align}
+
 Thus, we get:
+
 \begin{align}
-	\int \hat{f}(x)^2 \, dx = \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 h = \frac{1}{h} \sum_{j=1}^{m} \hat{p}_j^2
+\int \hat{f}(x)^2 \, dx = \sum_{j=1}^{m} \left( \frac{\hat{p}_j}{h} \right)^2 h = \frac{1}{h} \sum_{j=1}^{m} \hat{p}_j^2
 \end{align}
+\\
+
 Recall that \( \hat{p}_j = \frac{v_j}{n} \), so we can substitute \( \hat{p}_j^2 \) as:
+
 \begin{align}
-	\hat{p}_j^2 = \left( \frac{v_j}{n} \right)^2 = \frac{v_j^2}{n^2}
+\hat{p}_j^2 = \left( \frac{v_j}{n} \right)^2 = \frac{v_j^2}{n^2}
 \end{align}
+
 Thus, the integral becomes:
+
 \begin{align}
-	\int \hat{f}(x)^2 \, dx = \frac{1}{h} \sum_{j=1}^{m} \frac{v_j^2}{n^2}
+\int \hat{f}(x)^2 \, dx = \frac{1}{h} \sum_{j=1}^{m} \frac{v_j^2}{n^2}
 \end{align}
+
 Factor out \( \frac{1}{n^2 h} \):
+
 \begin{align}
-	\int \hat{f}(x)^2 \, dx = \frac{1}{n^2 h} \sum_{j=1}^{m} v_j^2
+\int \hat{f}(x)^2 \, dx = \frac{1}{n^2 h} \sum_{j=1}^{m} v_j^2
 \end{align}
+\\
 Hence, proved.
+\\
+\\
+\textbf{1.2}
+\\
+a)The estimated probabilities for all bins $\hat{p}_j$ is given as:
+\begin{align*}
+p_1 & = 0.2059, \:
+p_2 = 0.4882 \\
+p_3 & = 0.0471, \:
+p_4 = 0.0412 \\
+p_5 & = 0.1353, \:
+p_6  = 0.0588 \\
+p_7 & = 0.0059, \:
+p_8 = 0.0000 \\
+p_9 & = 0.0118, \:
+p_{10} = 0.0059
+\end{align*}
+\\
+b) The probability distribution is underfit. \\
+c) The optimal binwidth h is 0.06835999999999999
+\\
+d) The plot seems to give a better analysis of the distribution. It  offers significantly more detail and resolution compared to the 10-bin histogram. Each bin covers a narrower range of data values, leading to a more refined visualization that can better capture small variations in the dataset
