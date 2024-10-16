@@ -1,6 +1,6 @@
 \section{Finding optimal bandwidth}
-\subsection{Part 1 a}
-We are tasked with proving the following equation for the histogram estimator:
+
+a)We are tasked with proving the following equation for the histogram estimator:
 
 \begin{align}
 \int \hat{f}(x)^2 \, dx = \frac{1}{n^2 h} \sum_{j=1}^{m} v_j^2
@@ -74,3 +74,25 @@ Factor out \( \frac{1}{n^2 h} \):
 \end{align}
 \\
 Hence, proved.
+\\
+\\
+\textbf{1.2}
+\\
+a)The estimated probabilities for all bins $\hat{p}_j$ is given as:
+\begin{align*}
+p_1 & = 0.2059, \:
+p_2 = 0.4882 \\
+p_3 & = 0.0471, \:
+p_4 = 0.0412 \\
+p_5 & = 0.1353, \:
+p_6  = 0.0588 \\
+p_7 & = 0.0059, \:
+p_8 = 0.0000 \\
+p_9 & = 0.0118, \:
+p_{10} = 0.0059
+\end{align*}
+\\
+b) The probability distribution is underfit. \\
+c) The optimal binwidth h is 0.06835999999999999
+\\
+d) The plot seems to give a better analysis of the distribution. It  offers significantly more detail and resolution compared to the 10-bin histogram. Each bin covers a narrower range of data values, leading to a more refined visualization that can better capture small variations in the dataset
