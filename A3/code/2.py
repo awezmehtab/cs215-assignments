@@ -19,7 +19,7 @@ class EpanechnikovKDE:
         new_x = (x - xi) / self.bandwidth
         norms = np.sum(new_x**2, axis=-1)
         mask = norms <= 1
-        return np.where(mask, 3 * (1 - norms) / 4, 0)
+        return np.where(mask, 2 * (1 - norms) / np.pi, 0)
 
     def evaluate(self, x):
         """Evaluate the KDE at point x."""
@@ -29,7 +29,7 @@ class EpanechnikovKDE:
         xn = np.expand_dims(x, axis=1)
         datan = np.expand_dims(self.data, axis=0)
         kernel_eval = self.epanechnikov_kernel(xn, datan)
-        return np.sum(kernel_eval, axis=-1) / (self.bandwidth * len(self.data))
+        return np.sum(kernel_eval, axis=-1) / (self.bandwidth**2 * len(self.data))
 
 
 # Load the data from the NPZ file
@@ -46,8 +46,8 @@ ep_kernel.fit(data)
 
 # TODO: Plot the estimated density in a 3D plot
 
-x = np.linspace(-6, 6, 70)
-y = np.linspace(-6, 6, 70)
+x = np.linspace(-6, 6, 50)
+y = np.linspace(-6, 6, 50)
 xg, yg = np.meshgrid(x, y)
 
 input = np.column_stack([xg.ravel(), yg.ravel()])
@@ -64,4 +64,7 @@ ax.plot_surface(xg, yg, density, cmap="viridis")
 
 # TODO: Save the plot
 
+ax.set_xlabel("X")
+ax.set_ylabel("Y")
+ax.set_zlabel("Density")
 plt.savefig("transaction_distribution.jpg")
