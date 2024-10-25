@@ -8,10 +8,8 @@ motivation/
 *Zone*
 */class/
 *.fdb_latexmk
+.idea
 
 
 # datasets
 Forensic_glass_data
-
-
-
