@@ -2,23 +2,23 @@
 \subsection{2.1}
 \subsubsection{Part (a)}
 Our data has
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item Trend
 	\item Seasonality (3 months)
 	\item Varying variance
 \end{itemize}
 
-To remove varying variance I took log of the data, then take difference with lag 3 to remove seasonality.
+To remove varying variance I took log of the data, then took difference with
+lag 3 to remove seasonality.
 \subsubsection{Training the model}
-Since there's a clear seasonality, let's add a SARIMA (seasonal ARIMA) model.
-I'm using the parameters which can by easily deduced using ACF and PACF plots
-of the preprocessed data. Also applying the model on the testing set we create
-to evaluate errors (MASE and MAPE).
+Since there's a clear seasonality, I added a \texttt{SARIMA} (seasonal \texttt{ARIMA}) model.
+I'm using the parameters which can by easily deduced using \texttt{ACF} and \texttt{PACF} plots
+of the preprocessed data. Also we evaluate errors (\texttt{MASE} and \texttt{MAPE}).
 \subsubsection{Using and Interpreting our Model}
-Finally, we solve the question! Predicting the number of PASSENGERS CARRIED
+Finally, we solve the question! Predicting the number of \texttt{PASSENGERS CARRIED}
 from 2023 September to 2024 August. Since we added some preprocessing to our
 data, we need to reverse it. Here are the things we did
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item Took log of the data
 	\item Took difference with lag 3 (season)
 \end{itemize}
@@ -26,29 +26,92 @@ data, we need to reverse it. Here are the things we did
 So I first reverse the difference by adding data at 3 values before. Then I
 reverse the log by taking exp of the data.
 
+\subsubsection{Part (b)}
+
+This is the prompt given:
+\begin{center}
+	\texttt{
+		Given the following monthly airline passenger data, predict and display the
+		values for next 12 months (2023 SEP to 2024 AUG) for Passengers Carried, you
+		need not show any code or your though process, just the final predicted values
+		must be displayed, there's a season of 4 months: Airline A007, Year 2023,
+		Month JAN, Passengers Carried: 6847384.0.
+	}
+\end{center}
+
+The final evaluations by the LLM GPT4o are:
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Year \& Month   & Passengers Carried \\
+		\hline
+		\texttt{23 SEP} & \texttt{7789024}   \\
+		\texttt{23 OCT} & \texttt{8122317}   \\
+		\texttt{23 NOV} & \texttt{8225536}   \\
+		\texttt{23 DEC} & \texttt{8504783}   \\
+		\texttt{24 JAN} & \texttt{7739815}   \\
+		\texttt{24 FEB} & \texttt{7631294}   \\
+		\texttt{24 MAR} & \texttt{8124572}   \\
+		\texttt{24 APR} & \texttt{8218501}   \\
+		\texttt{24 MAY} & \texttt{8802926}   \\
+		\texttt{24 JUN} & \texttt{8550792}   \\
+		\texttt{24 JUL} & \texttt{8289312}   \\
+		\texttt{24 AUG} & \texttt{8494387}   \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{Part (c)}
+
+After applying the prophet model, the final predictions are:
+
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Year \& Month   & Passengers Carried    \\
+		\hline
+		\texttt{23 SEP} & \texttt{1.316906e+06} \\
+		\texttt{23 OCT} & \texttt{2.067208e+06} \\
+		\texttt{23 NOV} & \texttt{2.391833e+06} \\
+		\texttt{23 DEC} & \texttt{2.002217e+06} \\
+		\texttt{24 JAN} & \texttt{2.112962e+06} \\
+		\texttt{24 FEB} & \texttt{2.170063e+06} \\
+		\texttt{24 MAR} & \texttt{2.191516e+06} \\
+		\texttt{24 APR} & \texttt{2.404104e+06} \\
+		\texttt{24 MAY} & \texttt{2.605715e+06} \\
+		\texttt{24 JUN} & \texttt{2.192019e+06} \\
+		\texttt{24 JUL} & \texttt{2.120529e+06} \\
+		\texttt{24 AUG} & \texttt{2.404104e+06} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
 \subsection{2.2}
 In forecasting demand for fleet management and human resource planning, Mean
-Absolute Percentage Error (MAPE) may not be the best metric for evaluation.
+Absolute Percentage Error (\texttt{MAPE}) may not be the best metric for evaluation.
 This is because
 \begin{itemize}
-	\item \textbf{Sensitivity to Low Passenger Volumes:}  MAPE can inflate
+	\item \textbf{Sensitivity to Low Passenger Volumes:}  \texttt{MAPE} can inflate
 	      errors in months or seasons with low passenger volumes because it
 	      calculates percentage error. For fleet management, which focuses on
 	      total passenger volume over a quarter, these small-volume periods
-	      can skew MAPE disproportionately and lead to misleading conclusions
+	      can skew \texttt{MAPE} disproportionately and lead to misleading conclusions
 	      about capacity requirements.
 	\item \textbf{Human Resource Needs Based on Peak Demand:} For staffing,
 	      peak demand periods are often more critical than average levels.
-	      MAPE does not account for these peak demands, which are essential
+	      \texttt{MAPE} does not account for these peak demands, which are essential
 	      to ensuring adequate staffing during high-demand times.
 \end{itemize}
 
-The metric that could be better for this case is \textbf{Mean Absolute Scaled Error (MASE)} due to the following reasons:
+The metric that could be better for this case is \textbf{Mean Absolute Scaled
+	Error (\texttt{MASE})} due to the following reasons:
 \begin{itemize}
-	\item MASE is scale-invariant, making it useful across high- and
-	      low-demand periods without the issues MAPE has in low-volume
+	\item \texttt{MASE} is scale-invariant, making it useful across high- and
+	      low-demand periods without the issues \texttt{MAPE} has in low-volume
 	      situations.
-	\item By scaling against average demand from a baseline period, MASE
+	\item By scaling against average demand from a baseline period, \texttt{MASE}
 	      provides a clearer picture of prediction error across fluctuating
 	      demands, making it helpful for capturing both total and peak
 	      periods—key for both fleet and human resources needs.
