@@ -1,8 +1,6 @@
 \section{Forecasting on a Real World Dataset}
-\textbf{2.1}\\
-\textbf{a)}
-This dataset provides monthly operational metrics for a major Indian airline from 2013. It includes information on the number of departures, flight hours, distance flown, passenger traffic, available seat kilometers, freight carried, and mail carried. You can use any popular time series library for this task. 
-\subsection{Prepocessing the data}
+\subsection{2.1}
+\subsubsection{Part (a)}
 Our data has
 \begin{itemize}
 	\item Trend
@@ -10,35 +8,64 @@ Our data has
 	\item Varying variance
 \end{itemize}
 
-To remove varying variance I take log of the data, then take difference with lag 3 to remove seasonality.
-\subsection{Training the model}
-Since there's a clear seasonality, let's add a SARIMA (seasonal ARIMA) model. I'm using the parameters which can by easily deduced using ACF and PACF plots of the preprocessed data. Also applying the model on the testing set we create to evaluate errors (MASE and MAPE).
-\subsection{Using and Interpreting our Model}
-Finally, we solve the question! Predicting the number of PASSENGERS CARRIED from 2023 September to 2024 August. Since we added some preprocessing to our data, we need to reverse it. Here are the things we did
+To remove varying variance I took log of the data, then take difference with lag 3 to remove seasonality.
+\subsubsection{Training the model}
+Since there's a clear seasonality, let's add a SARIMA (seasonal ARIMA) model.
+I'm using the parameters which can by easily deduced using ACF and PACF plots
+of the preprocessed data. Also applying the model on the testing set we create
+to evaluate errors (MASE and MAPE).
+\subsubsection{Using and Interpreting our Model}
+Finally, we solve the question! Predicting the number of PASSENGERS CARRIED
+from 2023 September to 2024 August. Since we added some preprocessing to our
+data, we need to reverse it. Here are the things we did
 \begin{itemize}
 	\item Took log of the data
 	\item Took difference with lag 3 (season)
 \end{itemize}
 
-So I first reverse the difference by adding data at 3 values before. Then I reverse the log by taking exp of the data. \\
-\\
-\textbf{2.2} \\
-In forecasting demand for fleet management and human resource planning, Mean Absolute Percentage Error (MAPE) may not be the best metric for evaluation. This is because
+So I first reverse the difference by adding data at 3 values before. Then I
+reverse the log by taking exp of the data.
+
+\subsection{2.2}
+In forecasting demand for fleet management and human resource planning, Mean
+Absolute Percentage Error (MAPE) may not be the best metric for evaluation.
+This is because
 \begin{itemize}
-	\item \textbf{Sensitivity to Low Passenger Volumes:}  MAPE can inflate errors in months or seasons with low passenger volumes because it calculates percentage error. For fleet management, which focuses on total passenger volume over a quarter, these small-volume periods can skew MAPE disproportionately and lead to misleading conclusions about capacity requirements.
-	\item \textbf{Human Resource Needs Based on Peak Demand:} For staffing, peak demand periods are often more critical than average levels. MAPE does not account for these peak demands, which are essential to ensuring adequate staffing during high-demand times.
+	\item \textbf{Sensitivity to Low Passenger Volumes:}  MAPE can inflate
+	      errors in months or seasons with low passenger volumes because it
+	      calculates percentage error. For fleet management, which focuses on
+	      total passenger volume over a quarter, these small-volume periods
+	      can skew MAPE disproportionately and lead to misleading conclusions
+	      about capacity requirements.
+	\item \textbf{Human Resource Needs Based on Peak Demand:} For staffing,
+	      peak demand periods are often more critical than average levels.
+	      MAPE does not account for these peak demands, which are essential
+	      to ensuring adequate staffing during high-demand times.
 \end{itemize}
 
 The metric that could be better for this case is \textbf{Mean Absolute Scaled Error (MASE)} due to the following reasons:
 \begin{itemize}
-	\item MASE is scale-invariant, making it useful across high- and low-demand periods without the issues MAPE has in low-volume situations.
-	\item By scaling against average demand from a baseline period, MASE provides a clearer picture of prediction error across fluctuating demands, making it helpful for capturing both total and peak periods—key for both fleet and human resources needs.
+	\item MASE is scale-invariant, making it useful across high- and
+	      low-demand periods without the issues MAPE has in low-volume
+	      situations.
+	\item By scaling against average demand from a baseline period, MASE
+	      provides a clearer picture of prediction error across fluctuating
+	      demands, making it helpful for capturing both total and peak
+	      periods—key for both fleet and human resources needs.
 \end{itemize}
-\textbf{2.3}\\
-Given that $\Delta Y= $ (first-differenced series) is weakly stationary and can be represented as:
+
+\subsection{2.3}
+Given that $\Delta Y= $ (first-differenced series) is weakly stationary and can
+be represented as:
 \begin{equation}
 	\Delta Y = \mu + \mathcal{N}(0,\sigma)
 \end{equation}
-where $\sigma$ is known and $\mu$ is an unknown constant, we are tasked with testing if $\mu$ differs between the pre-COVID (before December 2019) and post-COVID (after January 2022) periods. 
+where $\sigma$ is known and $\mu$ is an unknown constant, we are tasked with
+testing if $\mu$ differs between the pre-COVID (before December 2019) and
+post-COVID (after January 2022) periods.
 \\
-We can use a \textbf{Two-Sample t-test} for comparing means of $\mu$ across the two periods. Given $\sigma$ is known and assuming normal distribution of $\Delta Y$, the two-sample t-test will allow us to test if the mean demand (represented by $\mu$) significantly changed between the pre- and post-COVID periods.
+We can use a \textbf{Two-Sample t-test} for comparing means of $\mu$ across the
+two periods. Given $\sigma$ is known and assuming normal distribution of
+$\Delta Y$, the two-sample t-test will allow us to test if the mean demand
+(represented by $\mu$) significantly changed between the pre- and post-COVID
+periods.
