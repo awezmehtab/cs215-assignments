@@ -1,0 +1,98 @@
+\documentclass[oneside]{report}
+
+\usepackage{
+	amsmath, amssymb, tcolorbox, fancyhdr, enumitem, float,
+	graphicx, amsthm, listings, xcolor, hyperref, nicematrix,
+	titlesec, tcolorbox, tikz, lipsum, dsfont, esdiff, subcaption
+}
+\tcbuselibrary{breakable}
+\tcbuselibrary{skins}
+
+% Page Layout
+\usepackage[a4paper, top=1.2in, bottom=1.2in, inner=1.0in, outer=1.0in]{geometry}
+
+% Font
+\usepackage{mathpazo}
+
+% Title
+\title{
+\vspace{3cm} 
+\Huge \textbf{Assignment 3}\\
+\vspace{0.5cm}
+\Large CS215: Data Analysis and Interpretation
+\vspace{0.5cm}
+}
+\author{
+    \textbf{Shaik Awez Mehtab, 23B1080} \\
+    \textbf{Satyam Sinoliya, 23B0958} \\
+    \textbf{Vaibhav Singh, 23B1068}
+}
+\date{}
+
+% Solution style
+
+\renewcommand{\thesection}{\textsc{Solution} \arabic{section}}
+\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}}
+
+\titleformat{\subsection}[block]
+    {\normalfont\large\bfseries}
+    {}
+    {0pt}
+    {\large}
+
+    \titlespacing*{\subsection}{0pt}{10pt}{0pt}
+
+\titleformat{\section}[block]
+    {\normalfont\large\bfseries}
+    {\thesection\\}
+    {5pt}
+    {\LARGE}
+    [\vspace{-0.7em}\rule{\textwidth}{0.4pt}]
+
+    \titlespacing*{\section}{0pt}{0pt}{0pt}
+
+\titleformat{\chapter}[block]
+    {\normalfont\Huge\bfseries}
+    {} 
+    {0pt}
+    {\Huge}
+
+    \titlespacing*{\chapter}{0pt}{-50pt}{10pt}
+
+% Header and Footer
+\fancypagestyle{mystyle}{
+    \fancyhf{} 
+    \fancyhead[L]{\textbf{Assignment 5}}
+    \fancyhead[C]{\thepage}
+    \fancyhead[R]{\textbf{CS215}}
+    \renewcommand{\headrulewidth}{0.4pt}
+
+    \fancyfoot[L]{\textbf{Awez}}
+    \fancyfoot[R]{\textbf{Vaibhav}}
+    \fancyfoot[C]{\textbf{Satyam}}
+    \renewcommand{\footrulewidth}{0.4pt}
+}
+\pagestyle{mystyle}
+
+% No indentation for lists
+\setlist[enumerate]{left=0pt}
+
+\begin{document}
+\begin{titlepage}
+	\raggedleft
+	\rule{1pt}{\textheight}
+	\hspace{0.05\textwidth}
+	\parbox[b]{0.75\textwidth}{
+	{\Huge\bfseries Assignment 5\\[2\baselineskip]}
+		{\Large\textit{CS215: Data Analysis and Interpretation}}\\[4\baselineskip]
+	{\Large{Shaik Awez Mehtab, 23B1080 \\ Vaibhav Singh, 23B1068 \\ Satyam Sinoliya, 23B0958}}\\
+	\vspace{0.5\textheight}
+	}
+\end{titlepage}
+\chapter{Solutions}
+
+\input{q1.tex}
+\setcounter{equation}{0}
+\input{q2.tex}
+
+\end{document}
