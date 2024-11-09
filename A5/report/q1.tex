@@ -1,0 +1,26 @@
+    \section{Data Icebreaker}
+    \subsection{Categorize columns}
+    \subsubsection{Categorical Columns}
+    \begin{itemize}
+        \item \texttt{pickup\_community\_area} and \texttt{dropoff\_community\_area}: These columns represent predefined geographic zones. They don't have inherent numeric meaning, so we classify them as categorical.
+        \item \texttt{trip\_start\_month} and \texttt{trip\_start\_day}: While represented as numbers, these actually denote categories of months and days. Treating them as categorical data makes it easier to encode and interpret as discrete categories.
+        \item \texttt{payment\_type} Payment methods, such as "Credit Card" or "Cash," are categorical.
+        \item \texttt{company}: The taxi company that provided the service is a categorical variable. It doesn't have inherent numeric meaning, so it's best treated as categorical.    
+    \end{itemize}
+    \subsubsection{Numerical Columns}
+    \begin{itemize}
+        \item \texttt{fare}: This column represents the fare amount, a continuous numerical variable that can be analyzed directly (e.g., for averages, totals).
+        \item \texttt{trip\_start\_hour}: Although it ranges from 0 to 23, this column represents the hour of the trip and is naturally numerical. Treating it as numerical allows calculations, like mean trip hours, if relevant.
+        \item \texttt{trip\_miles}: This column indicates the distance traveled in miles, a continuous numerical measurement suited for calculations such as averaging distances.
+        \item \texttt{pickup\_latitude}, \texttt{pickup\_longitude}, \texttt{dropoff\_latitude}, and \texttt{dropoff\_longitude}: These columns represent geographic coordinates, which are inherently numerical. They’re suitable for operations like distance calculations between pickup and dropoff points.
+        \item \texttt{trip\_seconds}: Trip duration is best suited as a numerical column, as it allows for calculations of averages or total trip time.
+        \item \texttt{tips}: This represents the tip amount in currency, a continuous numerical variable, so it fits into numerical analysis.
+    \end{itemize}
+    \subsubsection{Mixed Columns}
+    \begin{itemize}
+        \item \texttt{trip\_start\_timestamp}: This column stores timestamps, which don't fit cleanly into categorical or numerical types without conversion. Converting it into datetime format allows for time-based analysis.
+        \item \texttt{pickup\_census\_tract} and \texttt{dropoff\_census\_tract}: These columns represent census tracts, a geographic categorization. They're typically large integer codes that may include null values or non-numeric identifiers (like ZIP codes). Because these codes don’t imply numeric relationships, treating them as a complex type is useful unless they’re simplified
+    \end{itemize}
+
+
+    
