@@ -8,7 +8,7 @@ motivation/
 *Zone*
 */class/
 *.fdb_latexmk
-.idea
+.idea/
 
 
 # datasets
